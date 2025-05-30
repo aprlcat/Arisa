@@ -73,8 +73,8 @@ fn create_command_help_embed(command: &poise::Command<crate::Data, Error>) -> Cr
 async fn create_general_help_embed(ctx: Context<'_>) -> Result<CreateEmbed, Error> {
     let commands = &ctx.framework().options().commands;
 
-    let mut embed = create_info_embed("Arisa Bot - Command Help")
-        .description("A utility bot for encoding, decoding, hashing, and cryptographic operations.")
+    let mut embed = create_info_embed("Arisa - Command Help")
+        .description("I go by it/she, I'm a discord bot for nerds, by nerds :3")
         .color(CatppuccinColors::LAVENDER);
 
     let mut encoding_commands = Vec::new();
@@ -129,8 +129,7 @@ async fn create_general_help_embed(ctx: Context<'_>) -> Result<CreateEmbed, Erro
 
     embed = embed.field(
         "Usage",
-        "Use `/help <command>` for detailed information about a specific command.\nAll commands \
-         use Discord's slash command system - just type `/` to see available commands!",
+        "Use `/help <command>` for detailed information about a specific command!",
         false,
     );
 
