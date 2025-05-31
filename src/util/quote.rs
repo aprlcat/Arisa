@@ -17,6 +17,8 @@ const QUOTES: &[&str] = &[
     "🥺i wannq fuck my computer",
     "looks like the guys doing the testing got their CFLAGS wrong. I reckon they forgot omit-frame-pointer.",
     "-g -fsanitize=undefined,address -fno-omit-frame-pointer",
+    "segfault yourself",
+    "cat /dev/random",
 ];
 
 pub fn get_random_quote() -> &'static str {

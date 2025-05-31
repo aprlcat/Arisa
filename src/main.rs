@@ -108,7 +108,33 @@ async fn main() {
         })
         .setup(move |ctx, ready, framework| {
             Box::pin(async move {
-                poise::builtins::register_globally(ctx, &framework.options().commands).await?;
+                let commands =
+                    poise::builtins::create_application_commands(&framework.options().commands);
+
+                let user_installable_commands: Vec<_> = commands
+                    .into_iter()
+                    .map(|command| {
+                        command
+                            .integration_types(vec![
+                                serenity::InstallationContext::Guild,
+                                serenity::InstallationContext::User,
+                            ])
+                            .contexts(vec![
+                                serenity::InteractionContext::Guild,
+                                serenity::InteractionContext::BotDm,
+                                serenity::InteractionContext::PrivateChannel,
+                            ])
+                    })
+                    .collect();
+
+                ctx.http
+                    .create_global_commands(&user_installable_commands)
+                    .await?;
+                println!(
+                    "Registered {} user-installable commands",
+                    user_installable_commands.len()
+                );
+
                 on_ready(ctx, ready, framework).await?;
                 Ok(Data {})
             })

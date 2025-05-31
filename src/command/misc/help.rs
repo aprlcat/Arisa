@@ -15,10 +15,16 @@ pub async fn help(
     #[autocomplete = "poise::builtins::autocomplete_command"]
     command: Option<String>,
 ) -> Result<(), Error> {
+    let installation_context = if let Some(guild_id) = ctx.guild_id() {
+        format!("Server: {}", guild_id)
+    } else {
+        "User-installed (works everywhere!)".to_string()
+    };
+
     if let Some(command_name) = command {
         let commands = &ctx.framework().options().commands;
         if let Some(cmd) = commands.iter().find(|c| c.name == command_name) {
-            let embed = create_command_help_embed(cmd);
+            let embed = create_command_help_embed(cmd, &installation_context);
             ctx.send(poise::CreateReply::default().embed(embed).ephemeral(true))
                 .await?;
         } else {
@@ -29,7 +35,7 @@ pub async fn help(
                 .await?;
         }
     } else {
-        let embed = create_general_help_embed(ctx).await?;
+        let embed = create_general_help_embed(ctx, &installation_context).await?;
         ctx.send(poise::CreateReply::default().embed(embed).ephemeral(true))
             .await?;
     }
@@ -37,13 +43,15 @@ pub async fn help(
     Ok(())
 }
 
-fn create_command_help_embed(command: &poise::Command<crate::Data, Error>) -> CreateEmbed {
+fn create_command_help_embed(
+    command: &poise::Command<crate::Data, Error>,
+    context: &str,
+) -> CreateEmbed {
     let mut embed =
         create_info_embed(&format!("Help: {}", command.name)).color(CatppuccinColors::BLUE);
 
-    if let Some(description) = &command.description {
-        embed = embed.description(description);
-    }
+    let description = get_command_description(command);
+    embed = embed.description(&description);
 
     if let Some(help_text) = &command.help_text {
         embed = embed.field("Details", help_text, false);
@@ -67,27 +75,30 @@ fn create_command_help_embed(command: &poise::Command<crate::Data, Error>) -> Cr
         false,
     );
 
+    embed = embed.field("Installation", context, false);
+
     embed
 }
 
-async fn create_general_help_embed(ctx: Context<'_>) -> Result<CreateEmbed, Error> {
+async fn create_general_help_embed(ctx: Context<'_>, context: &str) -> Result<CreateEmbed, Error> {
     let commands = &ctx.framework().options().commands;
 
-    let mut embed = create_info_embed("Arisa - Command Help")
+    let mut embed = create_info_embed("Arisa")
         .description("I go by it/she, I'm a discord bot for nerds, by nerds :3")
         .color(CatppuccinColors::LAVENDER);
 
     let mut encoding_commands = Vec::new();
     let mut crypto_commands = Vec::new();
+    let mut assembly_commands = Vec::new();
     let mut misc_commands = Vec::new();
 
     for command in commands {
-        if command.name == "help" {
-            misc_commands.push(command);
-        } else if ["base64", "url", "rot", "endian"].contains(&command.name.as_str()) {
-            encoding_commands.push(command);
-        } else if ["hash", "checksum"].contains(&command.name.as_str()) {
-            crypto_commands.push(command);
+        match command.name.as_str() {
+            "help" | "github" | "color" => misc_commands.push(command),
+            "base64" | "url" | "rot" | "endian" | "timestamp" => encoding_commands.push(command),
+            "hash" | "checksum" | "uuid" => crypto_commands.push(command),
+            "x86" => assembly_commands.push(command),
+            _ => misc_commands.push(command),
         }
     }
 
@@ -97,10 +108,10 @@ async fn create_general_help_embed(ctx: Context<'_>) -> Result<CreateEmbed, Erro
             field_text.push_str(&format!(
                 "• **{}** - {}\n",
                 cmd.name,
-                cmd.description.as_deref().unwrap_or("No description")
+                get_command_description(cmd)
             ));
         }
-        embed = embed.field("🔤 Encoding & Text", field_text, false);
+        embed = embed.field("Encoding & Text", field_text, false);
     }
 
     if !crypto_commands.is_empty() {
@@ -109,10 +120,22 @@ async fn create_general_help_embed(ctx: Context<'_>) -> Result<CreateEmbed, Erro
             field_text.push_str(&format!(
                 "• **{}** - {}\n",
                 cmd.name,
-                cmd.description.as_deref().unwrap_or("No description")
+                get_command_description(cmd)
             ));
         }
-        embed = embed.field("🔐 Cryptography", field_text, false);
+        embed = embed.field("Cryptography", field_text, false);
+    }
+
+    if !assembly_commands.is_empty() {
+        let mut field_text = String::new();
+        for cmd in assembly_commands {
+            field_text.push_str(&format!(
+                "• **{}** - {}\n",
+                cmd.name,
+                get_command_description(cmd)
+            ));
+        }
+        embed = embed.field("Assembly", field_text, false);
     }
 
     if !misc_commands.is_empty() {
@@ -121,10 +144,10 @@ async fn create_general_help_embed(ctx: Context<'_>) -> Result<CreateEmbed, Erro
             field_text.push_str(&format!(
                 "• **{}** - {}\n",
                 cmd.name,
-                cmd.description.as_deref().unwrap_or("No description")
+                get_command_description(cmd)
             ));
         }
-        embed = embed.field("ℹ️ Miscellaneous", field_text, false);
+        embed = embed.field("Miscellaneous", field_text, false);
     }
 
     embed = embed.field(
@@ -133,5 +156,35 @@ async fn create_general_help_embed(ctx: Context<'_>) -> Result<CreateEmbed, Erro
         false,
     );
 
+    embed = embed.field("Installation", context, false);
+
+    embed = embed.field(
+        "Tip",
+        "Install me to your account to use these commands everywhere on Discord :3",
+        false,
+    );
+
     Ok(embed)
+}
+
+fn get_command_description(command: &poise::Command<crate::Data, Error>) -> String {
+    match command.name.as_str() {
+        "base64" => "Encode or decode data using Base64".to_string(),
+        "url" => "Encode or decode data using URL encoding".to_string(),
+        "rot" => "Apply ROT cipher to text with custom rotation value".to_string(),
+        "endian" => "Swap the endianness of hexadecimal data".to_string(),
+        "timestamp" => "Convert Unix timestamps to human-readable dates".to_string(),
+        "hash" => "Generate cryptographic hashes of data".to_string(),
+        "checksum" => "Calculate checksums of data for integrity verification".to_string(),
+        "uuid" => "Generate UUIDs (Universally Unique Identifiers)".to_string(),
+        "x86" => "Look up x86 assembly instructions by mnemonic or hex opcode".to_string(),
+        "github" => "Get GitHub user or repository information".to_string(),
+        "color" => "Convert and display colors in multiple formats".to_string(),
+        "help" => "Show help information about commands".to_string(),
+        _ => command
+            .description
+            .as_deref()
+            .unwrap_or("No description")
+            .to_string(),
+    }
 }
