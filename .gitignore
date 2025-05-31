@@ -1,3 +1,14 @@
 /target
 .env
 config.toml
+
+/result
+/result-*
+
+.direnv/
+
+.vscode/
+.idea/
+
+.DS_Store
+Thumbs.db
