@@ -2,6 +2,11 @@
 name = "arisa"
 version = "0.1.0"
 edition = "2024"
+authors = ["april <april@aprilrain77.com>"]
+description = "Discord bot for nerds, by nerds"
+repository = "https://github.com/aprlfm/Arisa"
+readme = "README.md"
+keywords = ["discord", "bot", "rust"]
 
 [dependencies]
 poise = "0.6.1"
