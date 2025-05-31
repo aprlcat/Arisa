@@ -2,7 +2,7 @@ use chrono::{DateTime, Local, TimeZone, Utc};
 
 use crate::{
     Context, Error,
-    util::command::{create_error_response, create_success_response},
+    util::command::{check_cooldown, create_error_response, create_success_response},
 };
 
 #[poise::command(
@@ -16,6 +16,8 @@ pub async fn timestamp(
     date: Option<String>,
     #[description = "Show in local timezone instead of UTC"] local: Option<bool>,
 ) -> Result<(), Error> {
+    check_cooldown(&ctx, "timestamp", ctx.data().config.cooldowns.per_user_cooldown).await?;
+
     let _use_local = local.unwrap_or(false);
 
     let (title, content) = if let Some(ts) = timestamp {
@@ -99,7 +101,7 @@ pub async fn timestamp(
         ("Current Timestamp", content)
     };
 
-    let embed = create_success_response(title, &content, false);
+    let embed = create_success_response(title, &content, false, &ctx.data().config);
     ctx.send(poise::CreateReply::default().embed(embed)).await?;
     Ok(())
 }

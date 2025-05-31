@@ -1,6 +1,6 @@
 use crate::{
     Context, Error,
-    util::command::{create_error_response, create_success_response, validate_input_size},
+    util::command::{check_cooldown, create_error_response, create_success_response, validate_input_size},
 };
 
 #[derive(poise::ChoiceParameter)]
@@ -20,8 +20,10 @@ pub async fn url(
     #[description = "Choose operation"] operation: Operation,
     #[description = "The data to encode or decode"] data: String,
 ) -> Result<(), Error> {
-    if let Err(e) = validate_input_size(&data) {
-        let embed = create_error_response("URL Encoding Error", &e);
+    check_cooldown(&ctx, "url", ctx.data().config.cooldowns.per_user_cooldown).await?;
+
+    if let Err(e) = validate_input_size(&data, &ctx.data().config) {
+        let embed = create_error_response("URL Encoding Error", &e.to_string());
         ctx.send(poise::CreateReply::default().embed(embed)).await?;
         return Ok(());
     }
@@ -44,7 +46,7 @@ pub async fn url(
         },
     };
 
-    let embed = create_success_response(&title, &result, true);
+    let embed = create_success_response(&title, &result, true, &ctx.data().config);
     ctx.send(poise::CreateReply::default().embed(embed)).await?;
     Ok(())
 }

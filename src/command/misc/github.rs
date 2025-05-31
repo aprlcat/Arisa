@@ -1,6 +1,6 @@
 use serde::Deserialize;
 
-use crate::{Context, Error, util::command::create_success_response};
+use crate::{Context, Error, util::command::{check_cooldown, create_success_response}};
 
 #[derive(Deserialize)]
 struct GitHubUser {
@@ -9,7 +9,6 @@ struct GitHubUser {
     bio: Option<String>,
     company: Option<String>,
     location: Option<String>,
-    #[allow(dead_code)]
     email: Option<String>,
     blog: Option<String>,
     public_repos: u32,
@@ -17,13 +16,11 @@ struct GitHubUser {
     followers: u32,
     following: u32,
     created_at: String,
-    #[allow(dead_code)]
     avatar_url: String,
 }
 
 #[derive(Deserialize)]
 struct GitHubRepo {
-    #[allow(dead_code)]
     name: String,
     full_name: String,
     description: Option<String>,
@@ -34,7 +31,6 @@ struct GitHubRepo {
     size: u32,
     created_at: String,
     updated_at: String,
-    #[allow(dead_code)]
     clone_url: String,
     html_url: String,
     #[serde(rename = "private")]
@@ -51,7 +47,6 @@ struct GitHubRepo {
 #[derive(Deserialize)]
 struct GitHubLicense {
     name: String,
-    #[allow(dead_code)]
     spdx_id: Option<String>,
 }
 
@@ -63,17 +58,22 @@ pub async fn github(
     ctx: Context<'_>,
     #[description = "GitHub username, repository, or URL"] input: String,
 ) -> Result<(), Error> {
+    check_cooldown(&ctx, "github", ctx.data().config.cooldowns.github_cooldown).await?;
+
     let input = input.trim();
     let (user, repo) = parse_github_input(input);
 
-    let (title, content) = if let Some(repo_name) = repo {
-        get_repository_info(&user, &repo_name).await?
+    if let Some(repo_name) = repo {
+        let (title, content) = get_repository_info(&user, &repo_name).await?;
+        let embed = create_success_response(&title, &content, false, &ctx.data().config);
+        ctx.send(poise::CreateReply::default().embed(embed)).await?;
     } else {
-        get_user_info(&user).await?
-    };
-
-    let embed = create_success_response(&title, &content, false);
-    ctx.send(poise::CreateReply::default().embed(embed)).await?;
+        let (title, content, avatar_url) = get_user_info(&user).await?;
+        let mut embed = create_success_response(&title, &content, false, &ctx.data().config);
+        embed = embed.thumbnail(avatar_url);
+        ctx.send(poise::CreateReply::default().embed(embed)).await?;
+    }
+    
     Ok(())
 }
 
@@ -94,7 +94,7 @@ fn parse_github_input(input: &str) -> (String, Option<String>) {
     }
 }
 
-async fn get_user_info(username: &str) -> Result<(String, String), Error> {
+async fn get_user_info(username: &str) -> Result<(String, String, String), Error> {
     let client = reqwest::Client::new();
     let url = format!("https://api.github.com/users/{}", username);
 
@@ -108,6 +108,7 @@ async fn get_user_info(username: &str) -> Result<(String, String), Error> {
         return Ok((
             "User not found".to_string(),
             format!("Could not find GitHub user: {}", username),
+            String::new(),
         ));
     }
 
@@ -148,7 +149,7 @@ async fn get_user_info(username: &str) -> Result<(String, String), Error> {
     description.push_str(&format!("\n**Profile:** https://github.com/{}", user.login));
 
     let title = format!("GitHub User: {}", user.login);
-    Ok((title, description))
+    Ok((title, description, user.avatar_url))
 }
 
 async fn get_repository_info(username: &str, repo_name: &str) -> Result<(String, String), Error> {

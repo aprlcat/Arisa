@@ -1,6 +1,10 @@
+use image::{ImageBuffer, Rgb};
+use std::io::Cursor;
+use poise::serenity_prelude::CreateAttachment;
+
 use crate::{
     Context, Error,
-    util::command::{create_error_response, create_success_response},
+    util::command::{check_cooldown, create_error_response, create_success_response},
 };
 
 #[poise::command(
@@ -11,6 +15,8 @@ pub async fn color(
     ctx: Context<'_>,
     #[description = "Color in HEX (#FF0000), RGB (255,0,0), or name (red)"] input: String,
 ) -> Result<(), Error> {
+    check_cooldown(&ctx, "color", ctx.data().config.cooldowns.color_cooldown).await?;
+
     let input = input.trim();
 
     let color = match parse_color(input) {
@@ -49,11 +55,34 @@ pub async fn color(
         (color.r as u32) << 16 | (color.g as u32) << 8 | color.b as u32
     );
 
-    let title = format!("Color: {}", hex);
-    let embed = create_success_response(&title, &description, false);
+    let color_image = generate_color_image(color.r, color.g, color.b)?;
+    let attachment = CreateAttachment::bytes(color_image, "color.png");
 
-    ctx.send(poise::CreateReply::default().embed(embed)).await?;
+    let title = format!("Color: {}", hex);
+    let mut embed = create_success_response(&title, &description, false, &ctx.data().config);
+    embed = embed.image("attachment://color.png");
+
+    ctx.send(
+        poise::CreateReply::default()
+            .embed(embed)
+            .attachment(attachment)
+    ).await?;
     Ok(())
+}
+
+fn generate_color_image(r: u8, g: u8, b: u8) -> Result<Vec<u8>, Error> {
+    let width = 200u32;
+    let height = 100u32;
+    
+    let img: ImageBuffer<Rgb<u8>, Vec<u8>> = ImageBuffer::from_fn(width, height, |_, _| {
+        Rgb([r, g, b])
+    });
+
+    let mut buf = Vec::new();
+    let mut cursor = Cursor::new(&mut buf);
+    img.write_to(&mut cursor, image::ImageFormat::Png)?;
+    
+    Ok(buf)
 }
 
 #[derive(Debug, Clone, Copy)]

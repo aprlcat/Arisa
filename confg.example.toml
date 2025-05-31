@@ -1,0 +1,38 @@
+[discord]
+token = "YOUR_DISCORD_TOKEN_HERE"
+
+[limits]
+max_input_size = 4096
+max_output_size = 4000
+
+[cooldowns]
+global_cooldown = 1
+per_user_cooldown = 3
+hash_cooldown = 5
+github_cooldown = 10
+color_cooldown = 2
+
+[github]
+user_agent = "Arisa-Bot/1.0"
+
+[quotes]
+update_interval_minutes = [3, 5]
+quotes = [
+    "I LOVE TRANSGENDER WOEMN",
+    "im sexy and i know it",
+    "thinking github came before git is like thinking pornhub came before porn",
+    "translation lookaside buff a cock up my ass",
+    "mov eax 0x80000000 mov ebx [eax] int 0x80 🥺🥺🥺🥺🥺🥺🥺🥺",
+    "love is in the air! WRONG cannibalism",
+    "((void (__fastcall *)(_OWORD *, _QWORD, __int64))memset)(_mm_loadh_ps((const double *)&v3[-254]), 0LL, 42681LL);",
+    "ghidra is backdoored by the NSA",
+    "a monad is just a monoid in the category of endofunctors",
+    "nix was created by homosexuals, for homosexuals",
+    "schizophrenic pond dweller : the Frog is coming",
+    "GITPULLO COMMITO MERGE CONFLICTO 🗣️ 🗣️",
+    "🥺i wannq fuck my computer",
+    "looks like the guys doing the testing got their CFLAGS wrong. I reckon they forgot omit-frame-pointer.",
+    "-g -fsanitize=undefined,address -fno-omit-frame-pointer",
+    "segfault yourself",
+    "cat /dev/random",
+]

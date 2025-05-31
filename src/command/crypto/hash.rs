@@ -1,7 +1,7 @@
 use crate::{
     Context, Error,
     util::{
-        command::{create_error_response, create_success_response, validate_input_size},
+        command::{check_cooldown, create_error_response, create_success_response, validate_input_size},
         crypto::HashAlgorithm,
     },
 };
@@ -55,8 +55,10 @@ pub async fn hash(
     #[description = "Hash algorithm to use"] algorithm: HashChoice,
     #[description = "The data to hash"] data: String,
 ) -> Result<(), Error> {
-    if let Err(e) = validate_input_size(&data) {
-        let embed = create_error_response("Hash Error", &e);
+    check_cooldown(&ctx, "hash", ctx.data().config.cooldowns.hash_cooldown).await?;
+
+    if let Err(e) = validate_input_size(&data, &ctx.data().config) {
+        let embed = create_error_response("Hash Error", &e.to_string());
         ctx.send(poise::CreateReply::default().embed(embed)).await?;
         return Ok(());
     }
@@ -64,7 +66,7 @@ pub async fn hash(
     let hash_algo = algorithm.to_algorithm();
     let hash_result = hash_algo.hash(data.as_bytes());
     let title = format!("{} Hash", algorithm.name());
-    let embed = create_success_response(&title, &hash_result, true);
+    let embed = create_success_response(&title, &hash_result, true, &ctx.data().config);
 
     ctx.send(poise::CreateReply::default().embed(embed)).await?;
     Ok(())

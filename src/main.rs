@@ -1,26 +1,50 @@
 mod command;
+mod config;
+mod error;
 mod listener;
 mod util;
 
-use std::env;
+use std::sync::Arc;
 
 use command::{
     crypto::{checksum, hash, uuid},
     encoding::{base64, endian, rot, timestamp, url},
     misc::{color, github, help},
 };
+use config::Config;
+use error::BotError;
 use poise::serenity_prelude as serenity;
+use util::cooldown::CooldownManager;
 
-type Error = Box<dyn std::error::Error + Send + Sync>;
+type Error = BotError;
 type Context<'a> = poise::Context<'a, Data, Error>;
 
-pub struct Data {}
+#[derive(Clone)]
+pub struct Data {
+    pub config: Arc<Config>,
+    pub cooldown_manager: CooldownManager,
+}
 
 async fn on_error(error: poise::FrameworkError<'_, Data, Error>) {
     match error {
         poise::FrameworkError::Setup { error, .. } => panic!("Failed to start bot: {:?}", error),
         poise::FrameworkError::Command { error, ctx, .. } => {
-            println!("Error in command `{}`: {:?}", ctx.command().name, error,);
+            let error_msg = match &error {
+                BotError::Cooldown(seconds) => {
+                    format!("⏰ Command on cooldown for {} seconds", seconds)
+                }
+                BotError::InputTooLarge(size) => {
+                    format!("📏 Input too large: {} characters", size)
+                }
+                _ => format!("❌ Error: {}", error),
+            };
+
+            let embed = util::command::create_error_response("Command Error", &error_msg);
+            if let Err(e) = ctx.send(poise::CreateReply::default().embed(embed).ephemeral(true)).await {
+                println!("Error sending error response: {:?}", e);
+            }
+
+            println!("Error in command `{}`: {:?}", ctx.command().name, error);
         }
         error => {
             if let Err(e) = poise::builtins::on_error(error).await {
@@ -34,12 +58,13 @@ async fn on_ready(
     ctx: &serenity::Context,
     ready: &serenity::Ready,
     _framework: &poise::Framework<Data, Error>,
+    data: &Data,
 ) -> Result<(), Error> {
     println!("Logged in as {}", ready.user.name);
-    let initial_activity = util::quote::get_random_activity();
+    let initial_activity = util::quote::get_random_activity(&data.config);
     let initial_status = util::quote::get_random_status();
     ctx.set_presence(Some(initial_activity), initial_status);
-    util::status::start_status_updater(ctx.clone().into());
+    util::status::start_status_updater(ctx.clone().into(), data.config.clone());
 
     Ok(())
 }
@@ -49,7 +74,30 @@ async fn main() {
     dotenvy::dotenv().ok();
     util::logger::init().unwrap();
 
-    let token = env::var("DISCORD_TOKEN").expect("Expected a token in the environment");
+    let config = Arc::new(
+        Config::load_or_create("config.toml")
+            .expect("Failed to load configuration")
+    );
+
+    if config.discord.token.is_empty() {
+        panic!("Discord token not set in config.toml");
+    }
+
+    let cooldown_manager = CooldownManager::new();
+
+    let cleanup_manager = cooldown_manager.clone();
+    tokio::spawn(async move {
+        let mut interval = tokio::time::interval(tokio::time::Duration::from_secs(300));
+        loop {
+            interval.tick().await;
+            cleanup_manager.cleanup_expired(3600).await;
+        }
+    });
+
+    let data = Data {
+        config: config.clone(),
+        cooldown_manager,
+    };
 
     let intents =
         serenity::GatewayIntents::non_privileged() | serenity::GatewayIntents::MESSAGE_CONTENT;
@@ -135,13 +183,13 @@ async fn main() {
                     user_installable_commands.len()
                 );
 
-                on_ready(ctx, ready, framework).await?;
-                Ok(Data {})
+                on_ready(ctx, ready, framework, &data).await?;
+                Ok(data)
             })
         })
         .build();
 
-    let client = serenity::ClientBuilder::new(token, intents)
+    let client = serenity::ClientBuilder::new(&config.discord.token, intents)
         .framework(framework)
         .await;
 

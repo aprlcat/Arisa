@@ -15,27 +15,21 @@ pub async fn help(
     #[autocomplete = "poise::builtins::autocomplete_command"]
     command: Option<String>,
 ) -> Result<(), Error> {
-    let installation_context = if let Some(guild_id) = ctx.guild_id() {
-        format!("Server: {}", guild_id)
-    } else {
-        "User-installed (works everywhere!)".to_string()
-    };
-
     if let Some(command_name) = command {
         let commands = &ctx.framework().options().commands;
         if let Some(cmd) = commands.iter().find(|c| c.name == command_name) {
-            let embed = create_command_help_embed(cmd, &installation_context);
+            let embed = create_command_help_embed(cmd, &ctx.data().config);
             ctx.send(poise::CreateReply::default().embed(embed).ephemeral(true))
                 .await?;
         } else {
-            let embed = create_info_embed("Command Not Found")
+            let embed = create_info_embed("Command Not Found", &ctx.data().config)
                 .description(format!("No command named `{}` was found.", command_name))
                 .color(CatppuccinColors::RED);
             ctx.send(poise::CreateReply::default().embed(embed).ephemeral(true))
                 .await?;
         }
     } else {
-        let embed = create_general_help_embed(ctx, &installation_context).await?;
+        let embed = create_general_help_embed(ctx).await?;
         ctx.send(poise::CreateReply::default().embed(embed).ephemeral(true))
             .await?;
     }
@@ -45,10 +39,10 @@ pub async fn help(
 
 fn create_command_help_embed(
     command: &poise::Command<crate::Data, Error>,
-    context: &str,
+    config: &crate::Config,
 ) -> CreateEmbed {
     let mut embed =
-        create_info_embed(&format!("Help: {}", command.name)).color(CatppuccinColors::BLUE);
+        create_info_embed(&format!("Help: {}", command.name), config).color(CatppuccinColors::BLUE);
 
     let description = get_command_description(command);
     embed = embed.description(&description);
@@ -75,15 +69,13 @@ fn create_command_help_embed(
         false,
     );
 
-    embed = embed.field("Installation", context, false);
-
     embed
 }
 
-async fn create_general_help_embed(ctx: Context<'_>, context: &str) -> Result<CreateEmbed, Error> {
+async fn create_general_help_embed(ctx: Context<'_>) -> Result<CreateEmbed, Error> {
     let commands = &ctx.framework().options().commands;
 
-    let mut embed = create_info_embed("Arisa")
+    let mut embed = create_info_embed("Arisa", &ctx.data().config)
         .description("I go by it/she, I'm a discord bot for nerds, by nerds :3")
         .color(CatppuccinColors::LAVENDER);
 
@@ -155,8 +147,6 @@ async fn create_general_help_embed(ctx: Context<'_>, context: &str) -> Result<Cr
         "Use `/help <command>` for detailed information about a specific command!",
         false,
     );
-
-    embed = embed.field("Installation", context, false);
 
     embed = embed.field(
         "Tip",

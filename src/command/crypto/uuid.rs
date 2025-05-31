@@ -1,4 +1,4 @@
-use crate::{Context, Error, util::command::create_success_response};
+use crate::{Context, Error, util::command::{check_cooldown, create_success_response}};
 
 #[derive(poise::ChoiceParameter)]
 pub enum UuidVersion {
@@ -41,6 +41,8 @@ pub async fn uuid(
     count: Option<u8>,
     #[description = "Show UUID breakdown and information"] analyze: Option<bool>,
 ) -> Result<(), Error> {
+    check_cooldown(&ctx, "uuid", ctx.data().config.cooldowns.per_user_cooldown).await?;
+
     let version = version.unwrap_or(UuidVersion::V4);
     let count = count.unwrap_or(1);
     let analyze = analyze.unwrap_or(false);
@@ -107,7 +109,7 @@ pub async fn uuid(
         }
     );
 
-    let embed = create_success_response(&title, &description, false);
+    let embed = create_success_response(&title, &description, false, &ctx.data().config);
     ctx.send(poise::CreateReply::default().embed(embed)).await?;
     Ok(())
 }

@@ -1,7 +1,7 @@
 use crate::{
     Context, Error,
     util::{
-        command::{create_error_response, create_success_response, validate_input_size},
+        command::{check_cooldown, create_error_response, create_success_response, validate_input_size},
         crypto::{calculate_adler32, calculate_crc32},
     },
 };
@@ -32,8 +32,10 @@ pub async fn checksum(
     #[description = "Checksum algorithm to use"] algorithm: ChecksumAlgorithm,
     #[description = "The data to calculate checksum for"] data: String,
 ) -> Result<(), Error> {
-    if let Err(e) = validate_input_size(&data) {
-        let embed = create_error_response("Checksum Error", &e);
+    check_cooldown(&ctx, "checksum", ctx.data().config.cooldowns.hash_cooldown).await?;
+
+    if let Err(e) = validate_input_size(&data, &ctx.data().config) {
+        let embed = create_error_response("Checksum Error", &e.to_string());
         ctx.send(poise::CreateReply::default().embed(embed)).await?;
         return Ok(());
     }
@@ -55,7 +57,7 @@ pub async fn checksum(
         }
     };
 
-    let embed = create_success_response(&title, &result, true);
+    let embed = create_success_response(&title, &result, true, &ctx.data().config);
     ctx.send(poise::CreateReply::default().embed(embed)).await?;
     Ok(())
 }
