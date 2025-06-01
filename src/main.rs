@@ -9,7 +9,7 @@ use std::sync::Arc;
 use command::{
     crypto::{checksum, hash, uuid},
     encoding::{base64, endian, rot, timestamp, url},
-    misc::{color, github, help},
+    misc::{color, github, hawktuah, help},
 };
 use config::Config;
 use error::BotError;
@@ -102,21 +102,22 @@ async fn main() {
     let intents =
         serenity::GatewayIntents::non_privileged() | serenity::GatewayIntents::MESSAGE_CONTENT;
 
-    let framework = poise::Framework::builder()
-        .options(poise::FrameworkOptions {
-            commands: vec![
-                help(),
-                base64(),
-                url(),
-                rot(),
-                endian(),
-                timestamp(),
-                hash(),
-                checksum(),
-                uuid(),
-                github(),
-                color(),
-            ],
+let framework = poise::Framework::builder()
+    .options(poise::FrameworkOptions {
+        commands: vec![
+            help(),
+            base64(),
+            url(),
+            rot(),
+            endian(),
+            timestamp(),
+            hash(),
+            checksum(),
+            uuid(),
+            github(),
+            color(),
+            hawktuah(),
+        ],
             prefix_options: poise::PrefixFrameworkOptions {
                 prefix: None,
                 ..Default::default()
