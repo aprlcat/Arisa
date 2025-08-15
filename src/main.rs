@@ -11,6 +11,7 @@ use command::{
     encoding::{base64, endian, rot, timestamp, url},
     java::{jep, opcode},
     misc::{color, github, hawktuah, help},
+    security::cve,
 };
 use config::Config;
 use error::BotError;
@@ -121,6 +122,7 @@ async fn main() {
                 hawktuah(),
                 jep(),
                 opcode(),
+                cve(),
             ],
             prefix_options: poise::PrefixFrameworkOptions {
                 prefix: None,

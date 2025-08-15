@@ -82,6 +82,7 @@ async fn create_general_help_embed(ctx: Context<'_>) -> Result<CreateEmbed, Erro
     let mut encoding_commands = Vec::new();
     let mut crypto_commands = Vec::new();
     let mut java_commands = Vec::new();
+    let mut security_commands = Vec::new();
     let mut misc_commands = Vec::new();
 
     for command in commands {
@@ -89,7 +90,8 @@ async fn create_general_help_embed(ctx: Context<'_>) -> Result<CreateEmbed, Erro
             "help" | "github" | "color" | "hawktuah" => misc_commands.push(command),
             "base64" | "url" | "rot" | "endian" | "timestamp" => encoding_commands.push(command),
             "hash" | "checksum" | "uuid" => crypto_commands.push(command),
-            "jep" => java_commands.push(command),
+            "jep" | "opcode" => java_commands.push(command),
+            "cve" => security_commands.push(command),
             _ => misc_commands.push(command),
         }
     }
@@ -130,6 +132,18 @@ async fn create_general_help_embed(ctx: Context<'_>) -> Result<CreateEmbed, Erro
         embed = embed.field("Java", field_text, false);
     }
 
+    if !security_commands.is_empty() {
+        let mut field_text = String::new();
+        for cmd in security_commands {
+            field_text.push_str(&format!(
+                "• **{}** - {}\n",
+                cmd.name,
+                get_command_description(cmd)
+            ));
+        }
+        embed = embed.field("Security", field_text, false);
+    }
+
     if !misc_commands.is_empty() {
         let mut field_text = String::new();
         for cmd in misc_commands {
@@ -168,6 +182,8 @@ fn get_command_description(command: &poise::Command<crate::Data, Error>) -> Stri
         "checksum" => "Calculate checksums of data for integrity verification".to_string(),
         "uuid" => "Generate UUIDs (Universally Unique Identifiers)".to_string(),
         "jep" => "Get information about Java Enhancement Proposals".to_string(),
+        "opcode" => "Get information about JVM bytecode instructions".to_string(),
+        "cve" => "Get information about CVE vulnerabilities".to_string(),
         "github" => "Get GitHub user or repository information".to_string(),
         "color" => "Convert and display colors in multiple formats".to_string(),
         "help" => "Show help information about commands".to_string(),
