@@ -5,6 +5,7 @@ use std::{
 };
 
 use once_cell::sync::Lazy;
+use poise::serenity_prelude::AutocompleteChoice;
 use serde::{Deserialize, Serialize};
 use tokio::sync::RwLock;
 
@@ -37,8 +38,38 @@ struct CachedInstructions {
 static INSTRUCTION_CACHE: Lazy<Arc<RwLock<Option<CachedInstructions>>>> =
     Lazy::new(|| Arc::new(RwLock::new(None)));
 
+static OPCODE_NAMES: Lazy<Vec<String>> = Lazy::new(|| {
+    let instructions: Result<Vec<JvmInstruction>, _> = serde_json::from_str(JSON_DATA);
+
+    match instructions {
+        Ok(instructions) => {
+            let mut names: Vec<String> = instructions
+                .into_iter()
+                .map(|instruction| instruction.mnemonic.to_lowercase())
+                .collect();
+            names.sort();
+            names.dedup();
+            names
+        }
+        Err(_) => Vec::new(),
+    }
+});
+
 const CACHE_DURATION: Duration = Duration::from_secs(3600);
 const JSON_DATA: &str = include_str!("../../../datagen/java/jvm_instructions.json");
+
+async fn autocomplete_opcode(
+    _ctx: Context<'_>,
+    partial: &str,
+) -> impl Iterator<Item = AutocompleteChoice> {
+    let partial_lower = partial.to_lowercase();
+
+    OPCODE_NAMES
+        .iter()
+        .filter(move |name| name.starts_with(&partial_lower))
+        .take(25)
+        .map(|name| AutocompleteChoice::new(name.clone(), name.clone()))
+}
 
 #[poise::command(
     slash_command,
@@ -47,6 +78,7 @@ const JSON_DATA: &str = include_str!("../../../datagen/java/jvm_instructions.jso
 pub async fn opcode(
     ctx: Context<'_>,
     #[description = "JVM instruction name (e.g., aaload, bipush, invokevirtual)"]
+    #[autocomplete = "autocomplete_opcode"]
     instruction: String,
     #[description = "Show detailed stack information"] detailed: Option<bool>,
 ) -> Result<(), Error> {
