@@ -164,7 +164,7 @@ func (s *Scraper) parseInstructionPage(pageURL, category string) InstructionData
 		data.Error = fmt.Sprintf("failed to create request: %v", err)
 		return data
 	}
-	req.Header.Set("User-Agent", "x86-scraper/1.0 (+https://github.com/user/x86-scraper)")
+	req.Header.Set("User-Agent", "x86-scraper/1.0")
 
 	resp, err := s.client.Do(req)
 	if err != nil {

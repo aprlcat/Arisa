@@ -9,7 +9,7 @@ use std::sync::Arc;
 use command::{
     crypto::{checksum, hash, uuid},
     encoding::{base64, endian, rot, timestamp, url},
-    java::jep,
+    java::{jep, opcode},
     misc::{color, github, hawktuah, help},
 };
 use config::Config;
@@ -120,6 +120,7 @@ async fn main() {
                 color(),
                 hawktuah(),
                 jep(),
+                opcode(),
             ],
             prefix_options: poise::PrefixFrameworkOptions {
                 prefix: None,

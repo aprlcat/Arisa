@@ -9,7 +9,7 @@ use tokio::sync::RwLock;
 
 use crate::{
     Context, Error,
-    util::command::{check_cooldown, create_error_response, create_success_response},
+    util::command::{check_cooldown, create_success_response},
 };
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

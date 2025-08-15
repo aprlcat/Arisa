@@ -1,0 +1,2061 @@
+[
+  {
+    "anchorId": "jvm-aaload",
+    "description": "load onto the stack a reference from an array",
+    "format": "aaload",
+    "mnemonic": "aaload",
+    "opcode": "aaload = 50 (0x32)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "arrayref, index",
+    "operation": "load onto the stack a reference from an array"
+  },
+  {
+    "anchorId": "jvm-aastore",
+    "description": "store a reference in an array",
+    "format": "aastore",
+    "mnemonic": "aastore",
+    "opcode": "aastore = 83 (0x53)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "arrayref, index, value",
+    "operation": "store a reference in an array"
+  },
+  {
+    "anchorId": "jvm-aconst-null",
+    "description": "push a null reference onto the stack",
+    "format": "aconst_null",
+    "mnemonic": "aconst_null",
+    "opcode": "aconst_null = 1 (0x01)",
+    "operandStackAfter": "null",
+    "operandStackBefore": "...",
+    "operation": "push a null reference onto the stack"
+  },
+  {
+    "anchorId": "jvm-aload",
+    "description": "load a reference onto the stack from a local variable #index",
+    "format": "aload 1 index",
+    "mnemonic": "aload",
+    "opcode": "aload = 25 (0x19)",
+    "operandStackAfter": "objectref",
+    "operandStackBefore": "...",
+    "operation": "load a reference onto the stack from a local variable #index"
+  },
+  {
+    "anchorId": "jvm-aload-0",
+    "description": "load a reference onto the stack from local variable 0",
+    "format": "aload_0",
+    "mnemonic": "aload_0",
+    "opcode": "aload_0 = 42 (0x2a)",
+    "operandStackAfter": "objectref",
+    "operandStackBefore": "...",
+    "operation": "load a reference onto the stack from local variable 0"
+  },
+  {
+    "anchorId": "jvm-aload-1",
+    "description": "load a reference onto the stack from local variable 1",
+    "format": "aload_1",
+    "mnemonic": "aload_1",
+    "opcode": "aload_1 = 43 (0x2b)",
+    "operandStackAfter": "objectref",
+    "operandStackBefore": "...",
+    "operation": "load a reference onto the stack from local variable 1"
+  },
+  {
+    "anchorId": "jvm-aload-2",
+    "description": "load a reference onto the stack from local variable 2",
+    "format": "aload_2",
+    "mnemonic": "aload_2",
+    "opcode": "aload_2 = 44 (0x2c)",
+    "operandStackAfter": "objectref",
+    "operandStackBefore": "...",
+    "operation": "load a reference onto the stack from local variable 2"
+  },
+  {
+    "anchorId": "jvm-aload-3",
+    "description": "load a reference onto the stack from local variable 3",
+    "format": "aload_3",
+    "mnemonic": "aload_3",
+    "opcode": "aload_3 = 45 (0x2d)",
+    "operandStackAfter": "objectref",
+    "operandStackBefore": "...",
+    "operation": "load a reference onto the stack from local variable 3"
+  },
+  {
+    "anchorId": "jvm-anewarray",
+    "description": "create a new array of references of length count and component type identified by the class reference index (.mw-parser-output .monospaced{font-family:monospace,monospace}indexbyte1 << 8 | indexbyte2) in the constant pool",
+    "format": "anewarray 2 indexbyte1, indexbyte2",
+    "mnemonic": "anewarray",
+    "opcode": "anewarray = 189 (0xbd)",
+    "operandStackAfter": "arrayref",
+    "operandStackBefore": "count",
+    "operation": "create a new array of references of length count and component type identified by the class reference index (.mw-parser-output .monospaced{font-family:monospace,monospace}indexbyte1 << 8 | indexbyte2) in the constant pool"
+  },
+  {
+    "anchorId": "jvm-areturn",
+    "description": "return a reference from a method",
+    "format": "areturn",
+    "mnemonic": "areturn",
+    "opcode": "areturn = 176 (0xb0)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "objectref",
+    "operation": "return a reference from a method"
+  },
+  {
+    "anchorId": "jvm-arraylength",
+    "description": "get the length of an array",
+    "format": "arraylength",
+    "mnemonic": "arraylength",
+    "opcode": "arraylength = 190 (0xbe)",
+    "operandStackAfter": "length",
+    "operandStackBefore": "arrayref",
+    "operation": "get the length of an array"
+  },
+  {
+    "anchorId": "jvm-astore",
+    "description": "store a reference into a local variable #index",
+    "format": "astore 1 index",
+    "mnemonic": "astore",
+    "opcode": "astore = 58 (0x3a)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "objectref",
+    "operation": "store a reference into a local variable #index"
+  },
+  {
+    "anchorId": "jvm-astore-0",
+    "description": "store a reference into local variable 0",
+    "format": "astore_0",
+    "mnemonic": "astore_0",
+    "opcode": "astore_0 = 75 (0x4b)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "objectref",
+    "operation": "store a reference into local variable 0"
+  },
+  {
+    "anchorId": "jvm-astore-1",
+    "description": "store a reference into local variable 1",
+    "format": "astore_1",
+    "mnemonic": "astore_1",
+    "opcode": "astore_1 = 76 (0x4c)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "objectref",
+    "operation": "store a reference into local variable 1"
+  },
+  {
+    "anchorId": "jvm-astore-2",
+    "description": "store a reference into local variable 2",
+    "format": "astore_2",
+    "mnemonic": "astore_2",
+    "opcode": "astore_2 = 77 (0x4d)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "objectref",
+    "operation": "store a reference into local variable 2"
+  },
+  {
+    "anchorId": "jvm-astore-3",
+    "description": "store a reference into local variable 3",
+    "format": "astore_3",
+    "mnemonic": "astore_3",
+    "opcode": "astore_3 = 78 (0x4e)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "objectref",
+    "operation": "store a reference into local variable 3"
+  },
+  {
+    "anchorId": "jvm-athrow",
+    "description": "throws an error or exception (notice that the rest of the stack is cleared, leaving only a reference to the Throwable)",
+    "format": "athrow",
+    "mnemonic": "athrow",
+    "opcode": "athrow = 191 (0xbf)",
+    "operandStackAfter": "[empty], objectref",
+    "operandStackBefore": "objectref",
+    "operation": "throws an error or exception (notice that the rest of the stack is cleared, leaving only a reference to the Throwable)"
+  },
+  {
+    "anchorId": "jvm-baload",
+    "description": "load a byte or Boolean value from an array",
+    "format": "baload",
+    "mnemonic": "baload",
+    "opcode": "baload = 51 (0x33)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "arrayref, index",
+    "operation": "load a byte or Boolean value from an array"
+  },
+  {
+    "anchorId": "jvm-bastore",
+    "description": "store a byte or Boolean value into an array",
+    "format": "bastore",
+    "mnemonic": "bastore",
+    "opcode": "bastore = 84 (0x54)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "arrayref, index, value",
+    "operation": "store a byte or Boolean value into an array"
+  },
+  {
+    "anchorId": "jvm-bipush",
+    "description": "push a byte onto the stack as an integer value",
+    "format": "bipush 1 byte",
+    "mnemonic": "bipush",
+    "opcode": "bipush = 16 (0x10)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "push a byte onto the stack as an integer value"
+  },
+  {
+    "anchorId": "jvm-breakpoint",
+    "description": "reserved for breakpoints in Java debuggers; should not appear in any class file",
+    "format": "breakpoint",
+    "mnemonic": "breakpoint",
+    "opcode": "breakpoint = 202 (0xca)",
+    "operandStackAfter": "No change",
+    "operandStackBefore": "No change",
+    "operation": "reserved for breakpoints in Java debuggers; should not appear in any class file"
+  },
+  {
+    "anchorId": "jvm-caload",
+    "description": "load a char from an array",
+    "format": "caload",
+    "mnemonic": "caload",
+    "opcode": "caload = 52 (0x34)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "arrayref, index",
+    "operation": "load a char from an array"
+  },
+  {
+    "anchorId": "jvm-castore",
+    "description": "store a char into an array",
+    "format": "castore",
+    "mnemonic": "castore",
+    "opcode": "castore = 85 (0x55)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "arrayref, index, value",
+    "operation": "store a char into an array"
+  },
+  {
+    "anchorId": "jvm-checkcast",
+    "description": "checks whether an objectref is of a certain type, the class reference of which is in the constant pool at index (indexbyte1 << 8 | indexbyte2)",
+    "format": "checkcast 2 indexbyte1, indexbyte2",
+    "mnemonic": "checkcast",
+    "opcode": "checkcast = 192 (0xc0)",
+    "operandStackAfter": "objectref",
+    "operandStackBefore": "objectref",
+    "operation": "checks whether an objectref is of a certain type, the class reference of which is in the constant pool at index (indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-d2f",
+    "description": "convert a double to a float",
+    "format": "d2f",
+    "mnemonic": "d2f",
+    "opcode": "d2f = 144 (0x90)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert a double to a float"
+  },
+  {
+    "anchorId": "jvm-d2i",
+    "description": "convert a double to an int",
+    "format": "d2i",
+    "mnemonic": "d2i",
+    "opcode": "d2i = 142 (0x8e)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert a double to an int"
+  },
+  {
+    "anchorId": "jvm-d2l",
+    "description": "convert a double to a long",
+    "format": "d2l",
+    "mnemonic": "d2l",
+    "opcode": "d2l = 143 (0x8f)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert a double to a long"
+  },
+  {
+    "anchorId": "jvm-dadd",
+    "description": "add two doubles",
+    "format": "dadd",
+    "mnemonic": "dadd",
+    "opcode": "dadd = 99 (0x63)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "add two doubles"
+  },
+  {
+    "anchorId": "jvm-daload",
+    "description": "load a double from an array",
+    "format": "daload",
+    "mnemonic": "daload",
+    "opcode": "daload = 49 (0x31)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "arrayref, index",
+    "operation": "load a double from an array"
+  },
+  {
+    "anchorId": "jvm-dastore",
+    "description": "store a double into an array",
+    "format": "dastore",
+    "mnemonic": "dastore",
+    "opcode": "dastore = 82 (0x52)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "arrayref, index, value",
+    "operation": "store a double into an array"
+  },
+  {
+    "anchorId": "jvm-dcmpg",
+    "description": "compare two doubles, 1 on NaN",
+    "format": "dcmpg",
+    "mnemonic": "dcmpg",
+    "opcode": "dcmpg = 152 (0x98)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "compare two doubles, 1 on NaN"
+  },
+  {
+    "anchorId": "jvm-dcmpl",
+    "description": "compare two doubles, -1 on NaN",
+    "format": "dcmpl",
+    "mnemonic": "dcmpl",
+    "opcode": "dcmpl = 151 (0x97)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "compare two doubles, -1 on NaN"
+  },
+  {
+    "anchorId": "jvm-dconst-0",
+    "description": "push the constant 0.0 (a double) onto the stack",
+    "format": "dconst_0",
+    "mnemonic": "dconst_0",
+    "opcode": "dconst_0 = 14 (0x0e)",
+    "operandStackAfter": "0.0",
+    "operandStackBefore": "...",
+    "operation": "push the constant 0.0 (a double) onto the stack"
+  },
+  {
+    "anchorId": "jvm-dconst-1",
+    "description": "push the constant 1.0 (a double) onto the stack",
+    "format": "dconst_1",
+    "mnemonic": "dconst_1",
+    "opcode": "dconst_1 = 15 (0x0f)",
+    "operandStackAfter": "1.0",
+    "operandStackBefore": "...",
+    "operation": "push the constant 1.0 (a double) onto the stack"
+  },
+  {
+    "anchorId": "jvm-ddiv",
+    "description": "divide two doubles",
+    "format": "ddiv",
+    "mnemonic": "ddiv",
+    "opcode": "ddiv = 111 (0x6f)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "divide two doubles"
+  },
+  {
+    "anchorId": "jvm-dload",
+    "description": "load a double value from a local variable #index",
+    "format": "dload 1 index",
+    "mnemonic": "dload",
+    "opcode": "dload = 24 (0x18)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a double value from a local variable #index"
+  },
+  {
+    "anchorId": "jvm-dload-0",
+    "description": "load a double from local variable 0",
+    "format": "dload_0",
+    "mnemonic": "dload_0",
+    "opcode": "dload_0 = 38 (0x26)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a double from local variable 0"
+  },
+  {
+    "anchorId": "jvm-dload-1",
+    "description": "load a double from local variable 1",
+    "format": "dload_1",
+    "mnemonic": "dload_1",
+    "opcode": "dload_1 = 39 (0x27)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a double from local variable 1"
+  },
+  {
+    "anchorId": "jvm-dload-2",
+    "description": "load a double from local variable 2",
+    "format": "dload_2",
+    "mnemonic": "dload_2",
+    "opcode": "dload_2 = 40 (0x28)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a double from local variable 2"
+  },
+  {
+    "anchorId": "jvm-dload-3",
+    "description": "load a double from local variable 3",
+    "format": "dload_3",
+    "mnemonic": "dload_3",
+    "opcode": "dload_3 = 41 (0x29)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a double from local variable 3"
+  },
+  {
+    "anchorId": "jvm-dmul",
+    "description": "multiply two doubles",
+    "format": "dmul",
+    "mnemonic": "dmul",
+    "opcode": "dmul = 107 (0x6b)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "multiply two doubles"
+  },
+  {
+    "anchorId": "jvm-dneg",
+    "description": "negate a double",
+    "format": "dneg",
+    "mnemonic": "dneg",
+    "opcode": "dneg = 119 (0x77)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "negate a double"
+  },
+  {
+    "anchorId": "jvm-drem",
+    "description": "get the remainder from a division between two doubles",
+    "format": "drem",
+    "mnemonic": "drem",
+    "opcode": "drem = 115 (0x73)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "get the remainder from a division between two doubles"
+  },
+  {
+    "anchorId": "jvm-dreturn",
+    "description": "return a double from a method",
+    "format": "dreturn",
+    "mnemonic": "dreturn",
+    "opcode": "dreturn = 175 (0xaf)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "return a double from a method"
+  },
+  {
+    "anchorId": "jvm-dstore",
+    "description": "store a double value into a local variable #index",
+    "format": "dstore 1 index",
+    "mnemonic": "dstore",
+    "opcode": "dstore = 57 (0x39)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a double value into a local variable #index"
+  },
+  {
+    "anchorId": "jvm-dstore-0",
+    "description": "store a double into local variable 0",
+    "format": "dstore_0",
+    "mnemonic": "dstore_0",
+    "opcode": "dstore_0 = 71 (0x47)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a double into local variable 0"
+  },
+  {
+    "anchorId": "jvm-dstore-1",
+    "description": "store a double into local variable 1",
+    "format": "dstore_1",
+    "mnemonic": "dstore_1",
+    "opcode": "dstore_1 = 72 (0x48)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a double into local variable 1"
+  },
+  {
+    "anchorId": "jvm-dstore-2",
+    "description": "store a double into local variable 2",
+    "format": "dstore_2",
+    "mnemonic": "dstore_2",
+    "opcode": "dstore_2 = 73 (0x49)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a double into local variable 2"
+  },
+  {
+    "anchorId": "jvm-dstore-3",
+    "description": "store a double into local variable 3",
+    "format": "dstore_3",
+    "mnemonic": "dstore_3",
+    "opcode": "dstore_3 = 74 (0x4a)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a double into local variable 3"
+  },
+  {
+    "anchorId": "jvm-dsub",
+    "description": "subtract a double from another",
+    "format": "dsub",
+    "mnemonic": "dsub",
+    "opcode": "dsub = 103 (0x67)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "subtract a double from another"
+  },
+  {
+    "anchorId": "jvm-dup",
+    "description": "duplicate the value on top of the stack",
+    "format": "dup",
+    "mnemonic": "dup",
+    "opcode": "dup = 89 (0x59)",
+    "operandStackAfter": "value, value",
+    "operandStackBefore": "value",
+    "operation": "duplicate the value on top of the stack"
+  },
+  {
+    "anchorId": "jvm-dup-x1",
+    "description": "insert a copy of the top value into the stack two values from the top. value1 and value2 must not be of the type double or long.",
+    "format": "dup_x1",
+    "mnemonic": "dup_x1",
+    "opcode": "dup_x1 = 90 (0x5a)",
+    "operandStackAfter": "value1, value2, value1",
+    "operandStackBefore": "value2, value1",
+    "operation": "insert a copy of the top value into the stack two values from the top. value1 and value2 must not be of the type double or long."
+  },
+  {
+    "anchorId": "jvm-dup-x2",
+    "description": "insert a copy of the top value into the stack two (if value2 is double or long it takes up the entry of value3, too) or three values (if value2 is neither double nor long) from the top",
+    "format": "dup_x2",
+    "mnemonic": "dup_x2",
+    "opcode": "dup_x2 = 91 (0x5b)",
+    "operandStackAfter": "value1, value3, value2, value1",
+    "operandStackBefore": "value3, value2, value1",
+    "operation": "insert a copy of the top value into the stack two (if value2 is double or long it takes up the entry of value3, too) or three values (if value2 is neither double nor long) from the top"
+  },
+  {
+    "anchorId": "jvm-dup2",
+    "description": "duplicate top two stack words (two values, if value1 is not double nor long; a single value, if value1 is double or long)",
+    "format": "dup2",
+    "mnemonic": "dup2",
+    "opcode": "dup2 = 92 (0x5c)",
+    "operandStackAfter": "{value2, value1}, {value2, value1}",
+    "operandStackBefore": "{value2, value1}",
+    "operation": "duplicate top two stack words (two values, if value1 is not double nor long; a single value, if value1 is double or long)"
+  },
+  {
+    "anchorId": "jvm-dup2-x1",
+    "description": "duplicate two words and insert beneath third word (see explanation above)",
+    "format": "dup2_x1",
+    "mnemonic": "dup2_x1",
+    "opcode": "dup2_x1 = 93 (0x5d)",
+    "operandStackAfter": "{value2, value1}, value3, {value2, value1}",
+    "operandStackBefore": "value3, {value2, value1}",
+    "operation": "duplicate two words and insert beneath third word (see explanation above)"
+  },
+  {
+    "anchorId": "jvm-dup2-x2",
+    "description": "duplicate two words and insert beneath fourth word",
+    "format": "dup2_x2",
+    "mnemonic": "dup2_x2",
+    "opcode": "dup2_x2 = 94 (0x5e)",
+    "operandStackAfter": "{value2, value1}, {value4, value3}, {value2, value1}",
+    "operandStackBefore": "{value4, value3}, {value2, value1}",
+    "operation": "duplicate two words and insert beneath fourth word"
+  },
+  {
+    "anchorId": "jvm-f2d",
+    "description": "convert a float to a double",
+    "format": "f2d",
+    "mnemonic": "f2d",
+    "opcode": "f2d = 141 (0x8d)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert a float to a double"
+  },
+  {
+    "anchorId": "jvm-f2i",
+    "description": "convert a float to an int",
+    "format": "f2i",
+    "mnemonic": "f2i",
+    "opcode": "f2i = 139 (0x8b)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert a float to an int"
+  },
+  {
+    "anchorId": "jvm-f2l",
+    "description": "convert a float to a long",
+    "format": "f2l",
+    "mnemonic": "f2l",
+    "opcode": "f2l = 140 (0x8c)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert a float to a long"
+  },
+  {
+    "anchorId": "jvm-fadd",
+    "description": "add two floats",
+    "format": "fadd",
+    "mnemonic": "fadd",
+    "opcode": "fadd = 98 (0x62)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "add two floats"
+  },
+  {
+    "anchorId": "jvm-faload",
+    "description": "load a float from an array",
+    "format": "faload",
+    "mnemonic": "faload",
+    "opcode": "faload = 48 (0x30)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "arrayref, index",
+    "operation": "load a float from an array"
+  },
+  {
+    "anchorId": "jvm-fastore",
+    "description": "store a float in an array",
+    "format": "fastore",
+    "mnemonic": "fastore",
+    "opcode": "fastore = 81 (0x51)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "arrayref, index, value",
+    "operation": "store a float in an array"
+  },
+  {
+    "anchorId": "jvm-fcmpg",
+    "description": "compare two floats, 1 on NaN",
+    "format": "fcmpg",
+    "mnemonic": "fcmpg",
+    "opcode": "fcmpg = 150 (0x96)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "compare two floats, 1 on NaN"
+  },
+  {
+    "anchorId": "jvm-fcmpl",
+    "description": "compare two floats, -1 on NaN",
+    "format": "fcmpl",
+    "mnemonic": "fcmpl",
+    "opcode": "fcmpl = 149 (0x95)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "compare two floats, -1 on NaN"
+  },
+  {
+    "anchorId": "jvm-fconst-0",
+    "description": "push 0.0f on the stack",
+    "format": "fconst_0",
+    "mnemonic": "fconst_0",
+    "opcode": "fconst_0 = 11 (0x0b)",
+    "operandStackAfter": "0.0f",
+    "operandStackBefore": "...",
+    "operation": "push 0.0f on the stack"
+  },
+  {
+    "anchorId": "jvm-fconst-1",
+    "description": "push 1.0f on the stack",
+    "format": "fconst_1",
+    "mnemonic": "fconst_1",
+    "opcode": "fconst_1 = 12 (0x0c)",
+    "operandStackAfter": "1.0f",
+    "operandStackBefore": "...",
+    "operation": "push 1.0f on the stack"
+  },
+  {
+    "anchorId": "jvm-fconst-2",
+    "description": "push 2.0f on the stack",
+    "format": "fconst_2",
+    "mnemonic": "fconst_2",
+    "opcode": "fconst_2 = 13 (0x0d)",
+    "operandStackAfter": "2.0f",
+    "operandStackBefore": "...",
+    "operation": "push 2.0f on the stack"
+  },
+  {
+    "anchorId": "jvm-fdiv",
+    "description": "divide two floats",
+    "format": "fdiv",
+    "mnemonic": "fdiv",
+    "opcode": "fdiv = 110 (0x6e)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "divide two floats"
+  },
+  {
+    "anchorId": "jvm-fload",
+    "description": "load a float value from a local variable #index",
+    "format": "fload 1 index",
+    "mnemonic": "fload",
+    "opcode": "fload = 23 (0x17)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a float value from a local variable #index"
+  },
+  {
+    "anchorId": "jvm-fload-0",
+    "description": "load a float value from local variable 0",
+    "format": "fload_0",
+    "mnemonic": "fload_0",
+    "opcode": "fload_0 = 34 (0x22)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a float value from local variable 0"
+  },
+  {
+    "anchorId": "jvm-fload-1",
+    "description": "load a float value from local variable 1",
+    "format": "fload_1",
+    "mnemonic": "fload_1",
+    "opcode": "fload_1 = 35 (0x23)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a float value from local variable 1"
+  },
+  {
+    "anchorId": "jvm-fload-2",
+    "description": "load a float value from local variable 2",
+    "format": "fload_2",
+    "mnemonic": "fload_2",
+    "opcode": "fload_2 = 36 (0x24)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a float value from local variable 2"
+  },
+  {
+    "anchorId": "jvm-fload-3",
+    "description": "load a float value from local variable 3",
+    "format": "fload_3",
+    "mnemonic": "fload_3",
+    "opcode": "fload_3 = 37 (0x25)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a float value from local variable 3"
+  },
+  {
+    "anchorId": "jvm-fmul",
+    "description": "multiply two floats",
+    "format": "fmul",
+    "mnemonic": "fmul",
+    "opcode": "fmul = 106 (0x6a)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "multiply two floats"
+  },
+  {
+    "anchorId": "jvm-fneg",
+    "description": "negate a float",
+    "format": "fneg",
+    "mnemonic": "fneg",
+    "opcode": "fneg = 118 (0x76)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "negate a float"
+  },
+  {
+    "anchorId": "jvm-frem",
+    "description": "get the remainder from a division between two floats",
+    "format": "frem",
+    "mnemonic": "frem",
+    "opcode": "frem = 114 (0x72)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "get the remainder from a division between two floats"
+  },
+  {
+    "anchorId": "jvm-freturn",
+    "description": "return a float",
+    "format": "freturn",
+    "mnemonic": "freturn",
+    "opcode": "freturn = 174 (0xae)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "return a float"
+  },
+  {
+    "anchorId": "jvm-fstore",
+    "description": "store a float value into a local variable #index",
+    "format": "fstore 1 index",
+    "mnemonic": "fstore",
+    "opcode": "fstore = 56 (0x38)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a float value into a local variable #index"
+  },
+  {
+    "anchorId": "jvm-fstore-0",
+    "description": "store a float value into local variable 0",
+    "format": "fstore_0",
+    "mnemonic": "fstore_0",
+    "opcode": "fstore_0 = 67 (0x43)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a float value into local variable 0"
+  },
+  {
+    "anchorId": "jvm-fstore-1",
+    "description": "store a float value into local variable 1",
+    "format": "fstore_1",
+    "mnemonic": "fstore_1",
+    "opcode": "fstore_1 = 68 (0x44)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a float value into local variable 1"
+  },
+  {
+    "anchorId": "jvm-fstore-2",
+    "description": "store a float value into local variable 2",
+    "format": "fstore_2",
+    "mnemonic": "fstore_2",
+    "opcode": "fstore_2 = 69 (0x45)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a float value into local variable 2"
+  },
+  {
+    "anchorId": "jvm-fstore-3",
+    "description": "store a float value into local variable 3",
+    "format": "fstore_3",
+    "mnemonic": "fstore_3",
+    "opcode": "fstore_3 = 70 (0x46)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a float value into local variable 3"
+  },
+  {
+    "anchorId": "jvm-fsub",
+    "description": "subtract two floats",
+    "format": "fsub",
+    "mnemonic": "fsub",
+    "opcode": "fsub = 102 (0x66)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "subtract two floats"
+  },
+  {
+    "anchorId": "jvm-getfield",
+    "description": "get a field value of an object objectref, where the field is identified by field reference in the constant pool index (indexbyte1 << 8 | indexbyte2)",
+    "format": "getfield 2 indexbyte1, indexbyte2",
+    "mnemonic": "getfield",
+    "opcode": "getfield = 180 (0xb4)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "objectref",
+    "operation": "get a field value of an object objectref, where the field is identified by field reference in the constant pool index (indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-getstatic",
+    "description": "get a static field value of a class, where the field is identified by field reference in the constant pool index (indexbyte1 << 8 | indexbyte2)",
+    "format": "getstatic 2 indexbyte1, indexbyte2",
+    "mnemonic": "getstatic",
+    "opcode": "getstatic = 178 (0xb2)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "get a static field value of a class, where the field is identified by field reference in the constant pool index (indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-goto",
+    "description": "goes to another instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "goto 2 branchbyte1, branchbyte2",
+    "mnemonic": "goto",
+    "opcode": "goto = 167 (0xa7)",
+    "operandStackAfter": "No change",
+    "operandStackBefore": "No change",
+    "operation": "goes to another instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-goto-w",
+    "description": "goes to another instruction at branchoffset (signed int constructed from unsigned bytes branchbyte1 << 24 | branchbyte2 << 16 | branchbyte3 << 8 | branchbyte4)",
+    "format": "goto_w 4 branchbyte1, branchbyte2, branchbyte3, branchbyte4",
+    "mnemonic": "goto_w",
+    "opcode": "goto_w = 200 (0xc8)",
+    "operandStackAfter": "No change",
+    "operandStackBefore": "No change",
+    "operation": "goes to another instruction at branchoffset (signed int constructed from unsigned bytes branchbyte1 << 24 | branchbyte2 << 16 | branchbyte3 << 8 | branchbyte4)"
+  },
+  {
+    "anchorId": "jvm-i2b",
+    "description": "convert an int into a byte",
+    "format": "i2b",
+    "mnemonic": "i2b",
+    "opcode": "i2b = 145 (0x91)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert an int into a byte"
+  },
+  {
+    "anchorId": "jvm-i2c",
+    "description": "convert an int into a character",
+    "format": "i2c",
+    "mnemonic": "i2c",
+    "opcode": "i2c = 146 (0x92)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert an int into a character"
+  },
+  {
+    "anchorId": "jvm-i2d",
+    "description": "convert an int into a double",
+    "format": "i2d",
+    "mnemonic": "i2d",
+    "opcode": "i2d = 135 (0x87)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert an int into a double"
+  },
+  {
+    "anchorId": "jvm-i2f",
+    "description": "convert an int into a float",
+    "format": "i2f",
+    "mnemonic": "i2f",
+    "opcode": "i2f = 134 (0x86)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert an int into a float"
+  },
+  {
+    "anchorId": "jvm-i2l",
+    "description": "convert an int into a long",
+    "format": "i2l",
+    "mnemonic": "i2l",
+    "opcode": "i2l = 133 (0x85)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert an int into a long"
+  },
+  {
+    "anchorId": "jvm-i2s",
+    "description": "convert an int into a short",
+    "format": "i2s",
+    "mnemonic": "i2s",
+    "opcode": "i2s = 147 (0x93)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert an int into a short"
+  },
+  {
+    "anchorId": "jvm-iadd",
+    "description": "add two ints",
+    "format": "iadd",
+    "mnemonic": "iadd",
+    "opcode": "iadd = 96 (0x60)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "add two ints"
+  },
+  {
+    "anchorId": "jvm-iaload",
+    "description": "load an int from an array",
+    "format": "iaload",
+    "mnemonic": "iaload",
+    "opcode": "iaload = 46 (0x2e)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "arrayref, index",
+    "operation": "load an int from an array"
+  },
+  {
+    "anchorId": "jvm-iand",
+    "description": "perform a bitwise AND on two integers",
+    "format": "iand",
+    "mnemonic": "iand",
+    "opcode": "iand = 126 (0x7e)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "perform a bitwise AND on two integers"
+  },
+  {
+    "anchorId": "jvm-iastore",
+    "description": "store an int into an array",
+    "format": "iastore",
+    "mnemonic": "iastore",
+    "opcode": "iastore = 79 (0x4f)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "arrayref, index, value",
+    "operation": "store an int into an array"
+  },
+  {
+    "anchorId": "jvm-iconst-m1",
+    "description": "load the int value −1 onto the stack",
+    "format": "iconst_m1",
+    "mnemonic": "iconst_m1",
+    "opcode": "iconst_m1 = 2 (0x02)",
+    "operandStackAfter": "-1",
+    "operandStackBefore": "...",
+    "operation": "load the int value −1 onto the stack"
+  },
+  {
+    "anchorId": "jvm-iconst-0",
+    "description": "load the int value 0 onto the stack",
+    "format": "iconst_0",
+    "mnemonic": "iconst_0",
+    "opcode": "iconst_0 = 3 (0x03)",
+    "operandStackAfter": "0",
+    "operandStackBefore": "...",
+    "operation": "load the int value 0 onto the stack"
+  },
+  {
+    "anchorId": "jvm-iconst-1",
+    "description": "load the int value 1 onto the stack",
+    "format": "iconst_1",
+    "mnemonic": "iconst_1",
+    "opcode": "iconst_1 = 4 (0x04)",
+    "operandStackAfter": "1",
+    "operandStackBefore": "...",
+    "operation": "load the int value 1 onto the stack"
+  },
+  {
+    "anchorId": "jvm-iconst-2",
+    "description": "load the int value 2 onto the stack",
+    "format": "iconst_2",
+    "mnemonic": "iconst_2",
+    "opcode": "iconst_2 = 5 (0x05)",
+    "operandStackAfter": "2",
+    "operandStackBefore": "...",
+    "operation": "load the int value 2 onto the stack"
+  },
+  {
+    "anchorId": "jvm-iconst-3",
+    "description": "load the int value 3 onto the stack",
+    "format": "iconst_3",
+    "mnemonic": "iconst_3",
+    "opcode": "iconst_3 = 6 (0x06)",
+    "operandStackAfter": "3",
+    "operandStackBefore": "...",
+    "operation": "load the int value 3 onto the stack"
+  },
+  {
+    "anchorId": "jvm-iconst-4",
+    "description": "load the int value 4 onto the stack",
+    "format": "iconst_4",
+    "mnemonic": "iconst_4",
+    "opcode": "iconst_4 = 7 (0x07)",
+    "operandStackAfter": "4",
+    "operandStackBefore": "...",
+    "operation": "load the int value 4 onto the stack"
+  },
+  {
+    "anchorId": "jvm-iconst-5",
+    "description": "load the int value 5 onto the stack",
+    "format": "iconst_5",
+    "mnemonic": "iconst_5",
+    "opcode": "iconst_5 = 8 (0x08)",
+    "operandStackAfter": "5",
+    "operandStackBefore": "...",
+    "operation": "load the int value 5 onto the stack"
+  },
+  {
+    "anchorId": "jvm-idiv",
+    "description": "divide two integers",
+    "format": "idiv",
+    "mnemonic": "idiv",
+    "opcode": "idiv = 108 (0x6c)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "divide two integers"
+  },
+  {
+    "anchorId": "jvm-if-acmpeq",
+    "description": "if references are equal, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "if_acmpeq 2 branchbyte1, branchbyte2",
+    "mnemonic": "if_acmpeq",
+    "opcode": "if_acmpeq = 165 (0xa5)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value1, value2",
+    "operation": "if references are equal, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-if-acmpne",
+    "description": "if references are not equal, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "if_acmpne 2 branchbyte1, branchbyte2",
+    "mnemonic": "if_acmpne",
+    "opcode": "if_acmpne = 166 (0xa6)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value1, value2",
+    "operation": "if references are not equal, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-if-icmpeq",
+    "description": "if ints are equal, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "if_icmpeq 2 branchbyte1, branchbyte2",
+    "mnemonic": "if_icmpeq",
+    "opcode": "if_icmpeq = 159 (0x9f)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value1, value2",
+    "operation": "if ints are equal, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-if-icmpge",
+    "description": "if value1 is greater than or equal to value2, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "if_icmpge 2 branchbyte1, branchbyte2",
+    "mnemonic": "if_icmpge",
+    "opcode": "if_icmpge = 162 (0xa2)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value1, value2",
+    "operation": "if value1 is greater than or equal to value2, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-if-icmpgt",
+    "description": "if value1 is greater than value2, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "if_icmpgt 2 branchbyte1, branchbyte2",
+    "mnemonic": "if_icmpgt",
+    "opcode": "if_icmpgt = 163 (0xa3)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value1, value2",
+    "operation": "if value1 is greater than value2, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-if-icmple",
+    "description": "if value1 is less than or equal to value2, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "if_icmple 2 branchbyte1, branchbyte2",
+    "mnemonic": "if_icmple",
+    "opcode": "if_icmple = 164 (0xa4)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value1, value2",
+    "operation": "if value1 is less than or equal to value2, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-if-icmplt",
+    "description": "if value1 is less than value2, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "if_icmplt 2 branchbyte1, branchbyte2",
+    "mnemonic": "if_icmplt",
+    "opcode": "if_icmplt = 161 (0xa1)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value1, value2",
+    "operation": "if value1 is less than value2, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-if-icmpne",
+    "description": "if ints are not equal, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "if_icmpne 2 branchbyte1, branchbyte2",
+    "mnemonic": "if_icmpne",
+    "opcode": "if_icmpne = 160 (0xa0)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value1, value2",
+    "operation": "if ints are not equal, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-ifeq",
+    "description": "if value is 0, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "ifeq 2 branchbyte1, branchbyte2",
+    "mnemonic": "ifeq",
+    "opcode": "ifeq = 153 (0x99)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "if value is 0, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-ifge",
+    "description": "if value is greater than or equal to 0, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "ifge 2 branchbyte1, branchbyte2",
+    "mnemonic": "ifge",
+    "opcode": "ifge = 156 (0x9c)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "if value is greater than or equal to 0, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-ifgt",
+    "description": "if value is greater than 0, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "ifgt 2 branchbyte1, branchbyte2",
+    "mnemonic": "ifgt",
+    "opcode": "ifgt = 157 (0x9d)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "if value is greater than 0, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-ifle",
+    "description": "if value is less than or equal to 0, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "ifle 2 branchbyte1, branchbyte2",
+    "mnemonic": "ifle",
+    "opcode": "ifle = 158 (0x9e)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "if value is less than or equal to 0, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-iflt",
+    "description": "if value is less than 0, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "iflt 2 branchbyte1, branchbyte2",
+    "mnemonic": "iflt",
+    "opcode": "iflt = 155 (0x9b)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "if value is less than 0, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-ifne",
+    "description": "if value is not 0, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "ifne 2 branchbyte1, branchbyte2",
+    "mnemonic": "ifne",
+    "opcode": "ifne = 154 (0x9a)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "if value is not 0, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-ifnonnull",
+    "description": "if value is not null, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "ifnonnull 2 branchbyte1, branchbyte2",
+    "mnemonic": "ifnonnull",
+    "opcode": "ifnonnull = 199 (0xc7)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "if value is not null, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-ifnull",
+    "description": "if value is null, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)",
+    "format": "ifnull 2 branchbyte1, branchbyte2",
+    "mnemonic": "ifnull",
+    "opcode": "ifnull = 198 (0xc6)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "if value is null, branch to instruction at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2)"
+  },
+  {
+    "anchorId": "jvm-iinc",
+    "description": "increment local variable #index by signed byte const",
+    "format": "iinc 2 index, const",
+    "mnemonic": "iinc",
+    "opcode": "iinc = 132 (0x84)",
+    "operandStackAfter": "No change",
+    "operandStackBefore": "No change",
+    "operation": "increment local variable #index by signed byte const"
+  },
+  {
+    "anchorId": "jvm-iload",
+    "description": "load an int value from a local variable #index",
+    "format": "iload 1 index",
+    "mnemonic": "iload",
+    "opcode": "iload = 21 (0x15)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load an int value from a local variable #index"
+  },
+  {
+    "anchorId": "jvm-iload-0",
+    "description": "load an int value from local variable 0",
+    "format": "iload_0",
+    "mnemonic": "iload_0",
+    "opcode": "iload_0 = 26 (0x1a)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load an int value from local variable 0"
+  },
+  {
+    "anchorId": "jvm-iload-1",
+    "description": "load an int value from local variable 1",
+    "format": "iload_1",
+    "mnemonic": "iload_1",
+    "opcode": "iload_1 = 27 (0x1b)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load an int value from local variable 1"
+  },
+  {
+    "anchorId": "jvm-iload-2",
+    "description": "load an int value from local variable 2",
+    "format": "iload_2",
+    "mnemonic": "iload_2",
+    "opcode": "iload_2 = 28 (0x1c)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load an int value from local variable 2"
+  },
+  {
+    "anchorId": "jvm-iload-3",
+    "description": "load an int value from local variable 3",
+    "format": "iload_3",
+    "mnemonic": "iload_3",
+    "opcode": "iload_3 = 29 (0x1d)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load an int value from local variable 3"
+  },
+  {
+    "anchorId": "jvm-impdep1",
+    "description": "reserved for implementation-dependent operations within debuggers; should not appear in any class file",
+    "format": "impdep1",
+    "mnemonic": "impdep1",
+    "opcode": "impdep1 = 254 (0xfe)",
+    "operandStackAfter": "No change",
+    "operandStackBefore": "No change",
+    "operation": "reserved for implementation-dependent operations within debuggers; should not appear in any class file"
+  },
+  {
+    "anchorId": "jvm-impdep2",
+    "description": "reserved for implementation-dependent operations within debuggers; should not appear in any class file",
+    "format": "impdep2",
+    "mnemonic": "impdep2",
+    "opcode": "impdep2 = 255 (0xff)",
+    "operandStackAfter": "No change",
+    "operandStackBefore": "No change",
+    "operation": "reserved for implementation-dependent operations within debuggers; should not appear in any class file"
+  },
+  {
+    "anchorId": "jvm-imul",
+    "description": "multiply two integers",
+    "format": "imul",
+    "mnemonic": "imul",
+    "opcode": "imul = 104 (0x68)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "multiply two integers"
+  },
+  {
+    "anchorId": "jvm-ineg",
+    "description": "negate int",
+    "format": "ineg",
+    "mnemonic": "ineg",
+    "opcode": "ineg = 116 (0x74)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "negate int"
+  },
+  {
+    "anchorId": "jvm-instanceof",
+    "description": "determines if an object objectref is of a given type, identified by class reference index in constant pool (indexbyte1 << 8 | indexbyte2)",
+    "format": "instanceof 2 indexbyte1, indexbyte2",
+    "mnemonic": "instanceof",
+    "opcode": "instanceof = 193 (0xc1)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "objectref",
+    "operation": "determines if an object objectref is of a given type, identified by class reference index in constant pool (indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-invokedynamic",
+    "description": "invokes a dynamic method and puts the result on the stack (might be void); the method is identified by method reference index in constant pool (indexbyte1 << 8 | indexbyte2)",
+    "format": "invokedynamic 4 indexbyte1, indexbyte2, 0, 0",
+    "mnemonic": "invokedynamic",
+    "opcode": "invokedynamic = 186 (0xba)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "[arg1, arg2, ...]",
+    "operation": "invokes a dynamic method and puts the result on the stack (might be void); the method is identified by method reference index in constant pool (indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-invokeinterface",
+    "description": "invokes an interface method on object objectref and puts the result on the stack (might be void); the interface method is identified by method reference index in constant pool (indexbyte1 << 8 | indexbyte2)",
+    "format": "invokeinterface 4 indexbyte1, indexbyte2, count, 0",
+    "mnemonic": "invokeinterface",
+    "opcode": "invokeinterface = 185 (0xb9)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "objectref, [arg1, arg2, ...]",
+    "operation": "invokes an interface method on object objectref and puts the result on the stack (might be void); the interface method is identified by method reference index in constant pool (indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-invokespecial",
+    "description": "invoke instance method on object objectref and puts the result on the stack (might be void); the method is identified by method reference index in constant pool (indexbyte1 << 8 | indexbyte2)",
+    "format": "invokespecial 2 indexbyte1, indexbyte2",
+    "mnemonic": "invokespecial",
+    "opcode": "invokespecial = 183 (0xb7)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "objectref, [arg1, arg2, ...]",
+    "operation": "invoke instance method on object objectref and puts the result on the stack (might be void); the method is identified by method reference index in constant pool (indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-invokestatic",
+    "description": "invoke a static method and puts the result on the stack (might be void); the method is identified by method reference index in constant pool (indexbyte1 << 8 | indexbyte2)",
+    "format": "invokestatic 2 indexbyte1, indexbyte2",
+    "mnemonic": "invokestatic",
+    "opcode": "invokestatic = 184 (0xb8)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "[arg1, arg2, ...]",
+    "operation": "invoke a static method and puts the result on the stack (might be void); the method is identified by method reference index in constant pool (indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-invokevirtual",
+    "description": "invoke virtual method on object objectref and puts the result on the stack (might be void); the method is identified by method reference index in constant pool (indexbyte1 << 8 | indexbyte2)",
+    "format": "invokevirtual 2 indexbyte1, indexbyte2",
+    "mnemonic": "invokevirtual",
+    "opcode": "invokevirtual = 182 (0xb6)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "objectref, [arg1, arg2, ...]",
+    "operation": "invoke virtual method on object objectref and puts the result on the stack (might be void); the method is identified by method reference index in constant pool (indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-ior",
+    "description": "bitwise int OR",
+    "format": "ior",
+    "mnemonic": "ior",
+    "opcode": "ior = 128 (0x80)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "bitwise int OR"
+  },
+  {
+    "anchorId": "jvm-irem",
+    "description": "logical int remainder",
+    "format": "irem",
+    "mnemonic": "irem",
+    "opcode": "irem = 112 (0x70)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "logical int remainder"
+  },
+  {
+    "anchorId": "jvm-ireturn",
+    "description": "return an integer from a method",
+    "format": "ireturn",
+    "mnemonic": "ireturn",
+    "opcode": "ireturn = 172 (0xac)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "return an integer from a method"
+  },
+  {
+    "anchorId": "jvm-ishl",
+    "description": "int shift left",
+    "format": "ishl",
+    "mnemonic": "ishl",
+    "opcode": "ishl = 120 (0x78)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "int shift left"
+  },
+  {
+    "anchorId": "jvm-ishr",
+    "description": "int arithmetic shift right",
+    "format": "ishr",
+    "mnemonic": "ishr",
+    "opcode": "ishr = 122 (0x7a)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "int arithmetic shift right"
+  },
+  {
+    "anchorId": "jvm-istore",
+    "description": "store int value into variable #index",
+    "format": "istore 1 index",
+    "mnemonic": "istore",
+    "opcode": "istore = 54 (0x36)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store int value into variable #index"
+  },
+  {
+    "anchorId": "jvm-istore-0",
+    "description": "store int value into variable 0",
+    "format": "istore_0",
+    "mnemonic": "istore_0",
+    "opcode": "istore_0 = 59 (0x3b)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store int value into variable 0"
+  },
+  {
+    "anchorId": "jvm-istore-1",
+    "description": "store int value into variable 1",
+    "format": "istore_1",
+    "mnemonic": "istore_1",
+    "opcode": "istore_1 = 60 (0x3c)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store int value into variable 1"
+  },
+  {
+    "anchorId": "jvm-istore-2",
+    "description": "store int value into variable 2",
+    "format": "istore_2",
+    "mnemonic": "istore_2",
+    "opcode": "istore_2 = 61 (0x3d)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store int value into variable 2"
+  },
+  {
+    "anchorId": "jvm-istore-3",
+    "description": "store int value into variable 3",
+    "format": "istore_3",
+    "mnemonic": "istore_3",
+    "opcode": "istore_3 = 62 (0x3e)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store int value into variable 3"
+  },
+  {
+    "anchorId": "jvm-isub",
+    "description": "int subtract",
+    "format": "isub",
+    "mnemonic": "isub",
+    "opcode": "isub = 100 (0x64)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "int subtract"
+  },
+  {
+    "anchorId": "jvm-iushr",
+    "description": "int logical shift right",
+    "format": "iushr",
+    "mnemonic": "iushr",
+    "opcode": "iushr = 124 (0x7c)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "int logical shift right"
+  },
+  {
+    "anchorId": "jvm-ixor",
+    "description": "int xor",
+    "format": "ixor",
+    "mnemonic": "ixor",
+    "opcode": "ixor = 130 (0x82)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "int xor"
+  },
+  {
+    "anchorId": "jvm-jsr†",
+    "description": "jump to subroutine at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2) and place the return address on the stack",
+    "format": "jsr† 2 branchbyte1, branchbyte2",
+    "mnemonic": "jsr†",
+    "opcode": "jsr† = 168 (0xa8)",
+    "operandStackAfter": "address",
+    "operandStackBefore": "...",
+    "operation": "jump to subroutine at branchoffset (signed short constructed from unsigned bytes branchbyte1 << 8 | branchbyte2) and place the return address on the stack"
+  },
+  {
+    "anchorId": "jvm-jsr-w†",
+    "description": "jump to subroutine at branchoffset (signed int constructed from unsigned bytes branchbyte1 << 24 | branchbyte2 << 16 | branchbyte3 << 8 | branchbyte4) and place the return address on the stack",
+    "format": "jsr_w† 4 branchbyte1, branchbyte2, branchbyte3, branchbyte4",
+    "mnemonic": "jsr_w†",
+    "opcode": "jsr_w† = 201 (0xc9)",
+    "operandStackAfter": "address",
+    "operandStackBefore": "...",
+    "operation": "jump to subroutine at branchoffset (signed int constructed from unsigned bytes branchbyte1 << 24 | branchbyte2 << 16 | branchbyte3 << 8 | branchbyte4) and place the return address on the stack"
+  },
+  {
+    "anchorId": "jvm-l2d",
+    "description": "convert a long to a double",
+    "format": "l2d",
+    "mnemonic": "l2d",
+    "opcode": "l2d = 138 (0x8a)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert a long to a double"
+  },
+  {
+    "anchorId": "jvm-l2f",
+    "description": "convert a long to a float",
+    "format": "l2f",
+    "mnemonic": "l2f",
+    "opcode": "l2f = 137 (0x89)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert a long to a float"
+  },
+  {
+    "anchorId": "jvm-l2i",
+    "description": "convert a long to a int",
+    "format": "l2i",
+    "mnemonic": "l2i",
+    "opcode": "l2i = 136 (0x88)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "convert a long to a int"
+  },
+  {
+    "anchorId": "jvm-ladd",
+    "description": "add two longs",
+    "format": "ladd",
+    "mnemonic": "ladd",
+    "opcode": "ladd = 97 (0x61)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "add two longs"
+  },
+  {
+    "anchorId": "jvm-laload",
+    "description": "load a long from an array",
+    "format": "laload",
+    "mnemonic": "laload",
+    "opcode": "laload = 47 (0x2f)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "arrayref, index",
+    "operation": "load a long from an array"
+  },
+  {
+    "anchorId": "jvm-land",
+    "description": "bitwise AND of two longs",
+    "format": "land",
+    "mnemonic": "land",
+    "opcode": "land = 127 (0x7f)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "bitwise AND of two longs"
+  },
+  {
+    "anchorId": "jvm-lastore",
+    "description": "store a long to an array",
+    "format": "lastore",
+    "mnemonic": "lastore",
+    "opcode": "lastore = 80 (0x50)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "arrayref, index, value",
+    "operation": "store a long to an array"
+  },
+  {
+    "anchorId": "jvm-lcmp",
+    "description": "push 0 if the two longs are the same, 1 if value1 is greater than value2, -1 otherwise",
+    "format": "lcmp",
+    "mnemonic": "lcmp",
+    "opcode": "lcmp = 148 (0x94)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "push 0 if the two longs are the same, 1 if value1 is greater than value2, -1 otherwise"
+  },
+  {
+    "anchorId": "jvm-lconst-0",
+    "description": "push 0L (the number zero with type long) onto the stack",
+    "format": "lconst_0",
+    "mnemonic": "lconst_0",
+    "opcode": "lconst_0 = 9 (0x09)",
+    "operandStackAfter": "0L",
+    "operandStackBefore": "...",
+    "operation": "push 0L (the number zero with type long) onto the stack"
+  },
+  {
+    "anchorId": "jvm-lconst-1",
+    "description": "push 1L (the number one with type long) onto the stack",
+    "format": "lconst_1",
+    "mnemonic": "lconst_1",
+    "opcode": "lconst_1 = 10 (0x0a)",
+    "operandStackAfter": "1L",
+    "operandStackBefore": "...",
+    "operation": "push 1L (the number one with type long) onto the stack"
+  },
+  {
+    "anchorId": "jvm-ldc",
+    "description": "push a constant #index from a constant pool (String, int, float, Class, java.lang.invoke.MethodType, java.lang.invoke.MethodHandle, or a dynamically-computed constant) onto the stack",
+    "format": "ldc 1 index",
+    "mnemonic": "ldc",
+    "opcode": "ldc = 18 (0x12)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "push a constant #index from a constant pool (String, int, float, Class, java.lang.invoke.MethodType, java.lang.invoke.MethodHandle, or a dynamically-computed constant) onto the stack"
+  },
+  {
+    "anchorId": "jvm-ldc-w",
+    "description": "push a constant #index from a constant pool (String, int, float, Class, java.lang.invoke.MethodType, java.lang.invoke.MethodHandle, or a dynamically-computed constant) onto the stack (wide index is constructed as indexbyte1 << 8 | indexbyte2)",
+    "format": "ldc_w 2 indexbyte1, indexbyte2",
+    "mnemonic": "ldc_w",
+    "opcode": "ldc_w = 19 (0x13)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "push a constant #index from a constant pool (String, int, float, Class, java.lang.invoke.MethodType, java.lang.invoke.MethodHandle, or a dynamically-computed constant) onto the stack (wide index is constructed as indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-ldc2-w",
+    "description": "push a constant #index from a constant pool (double, long, or a dynamically-computed constant) onto the stack (wide index is constructed as indexbyte1 << 8 | indexbyte2)",
+    "format": "ldc2_w 2 indexbyte1, indexbyte2",
+    "mnemonic": "ldc2_w",
+    "opcode": "ldc2_w = 20 (0x14)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "push a constant #index from a constant pool (double, long, or a dynamically-computed constant) onto the stack (wide index is constructed as indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-ldiv",
+    "description": "divide two longs",
+    "format": "ldiv",
+    "mnemonic": "ldiv",
+    "opcode": "ldiv = 109 (0x6d)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "divide two longs"
+  },
+  {
+    "anchorId": "jvm-lload",
+    "description": "load a long value from a local variable #index",
+    "format": "lload 1 index",
+    "mnemonic": "lload",
+    "opcode": "lload = 22 (0x16)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a long value from a local variable #index"
+  },
+  {
+    "anchorId": "jvm-lload-0",
+    "description": "load a long value from a local variable 0",
+    "format": "lload_0",
+    "mnemonic": "lload_0",
+    "opcode": "lload_0 = 30 (0x1e)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a long value from a local variable 0"
+  },
+  {
+    "anchorId": "jvm-lload-1",
+    "description": "load a long value from a local variable 1",
+    "format": "lload_1",
+    "mnemonic": "lload_1",
+    "opcode": "lload_1 = 31 (0x1f)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a long value from a local variable 1"
+  },
+  {
+    "anchorId": "jvm-lload-2",
+    "description": "load a long value from a local variable 2",
+    "format": "lload_2",
+    "mnemonic": "lload_2",
+    "opcode": "lload_2 = 32 (0x20)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a long value from a local variable 2"
+  },
+  {
+    "anchorId": "jvm-lload-3",
+    "description": "load a long value from a local variable 3",
+    "format": "lload_3",
+    "mnemonic": "lload_3",
+    "opcode": "lload_3 = 33 (0x21)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "load a long value from a local variable 3"
+  },
+  {
+    "anchorId": "jvm-lmul",
+    "description": "multiply two longs",
+    "format": "lmul",
+    "mnemonic": "lmul",
+    "opcode": "lmul = 105 (0x69)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "multiply two longs"
+  },
+  {
+    "anchorId": "jvm-lneg",
+    "description": "negate a long",
+    "format": "lneg",
+    "mnemonic": "lneg",
+    "opcode": "lneg = 117 (0x75)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value",
+    "operation": "negate a long"
+  },
+  {
+    "anchorId": "jvm-lookupswitch",
+    "description": "a target address is looked up from a table using a key and execution continues from the instruction at that address",
+    "format": "lookupswitch 8+ <0–3 bytes padding>, defaultbyte1, defaultbyte2, defaultbyte3, defaultbyte4, npairs1, npairs2, npairs3, npairs4, match-offset pairs...",
+    "mnemonic": "lookupswitch",
+    "opcode": "lookupswitch = 171 (0xab)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "key",
+    "operation": "a target address is looked up from a table using a key and execution continues from the instruction at that address"
+  },
+  {
+    "anchorId": "jvm-lor",
+    "description": "bitwise OR of two longs",
+    "format": "lor",
+    "mnemonic": "lor",
+    "opcode": "lor = 129 (0x81)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "bitwise OR of two longs"
+  },
+  {
+    "anchorId": "jvm-lrem",
+    "description": "remainder of division of two longs",
+    "format": "lrem",
+    "mnemonic": "lrem",
+    "opcode": "lrem = 113 (0x71)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "remainder of division of two longs"
+  },
+  {
+    "anchorId": "jvm-lreturn",
+    "description": "return a long value",
+    "format": "lreturn",
+    "mnemonic": "lreturn",
+    "opcode": "lreturn = 173 (0xad)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "return a long value"
+  },
+  {
+    "anchorId": "jvm-lshl",
+    "description": "bitwise shift left of a long value1 by int value2 positions",
+    "format": "lshl",
+    "mnemonic": "lshl",
+    "opcode": "lshl = 121 (0x79)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "bitwise shift left of a long value1 by int value2 positions"
+  },
+  {
+    "anchorId": "jvm-lshr",
+    "description": "bitwise shift right of a long value1 by int value2 positions",
+    "format": "lshr",
+    "mnemonic": "lshr",
+    "opcode": "lshr = 123 (0x7b)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "bitwise shift right of a long value1 by int value2 positions"
+  },
+  {
+    "anchorId": "jvm-lstore",
+    "description": "store a long value in a local variable #index",
+    "format": "lstore 1 index",
+    "mnemonic": "lstore",
+    "opcode": "lstore = 55 (0x37)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a long value in a local variable #index"
+  },
+  {
+    "anchorId": "jvm-lstore-0",
+    "description": "store a long value in a local variable 0",
+    "format": "lstore_0",
+    "mnemonic": "lstore_0",
+    "opcode": "lstore_0 = 63 (0x3f)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a long value in a local variable 0"
+  },
+  {
+    "anchorId": "jvm-lstore-1",
+    "description": "store a long value in a local variable 1",
+    "format": "lstore_1",
+    "mnemonic": "lstore_1",
+    "opcode": "lstore_1 = 64 (0x40)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a long value in a local variable 1"
+  },
+  {
+    "anchorId": "jvm-lstore-2",
+    "description": "store a long value in a local variable 2",
+    "format": "lstore_2",
+    "mnemonic": "lstore_2",
+    "opcode": "lstore_2 = 65 (0x41)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a long value in a local variable 2"
+  },
+  {
+    "anchorId": "jvm-lstore-3",
+    "description": "store a long value in a local variable 3",
+    "format": "lstore_3",
+    "mnemonic": "lstore_3",
+    "opcode": "lstore_3 = 66 (0x42)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "store a long value in a local variable 3"
+  },
+  {
+    "anchorId": "jvm-lsub",
+    "description": "subtract two longs",
+    "format": "lsub",
+    "mnemonic": "lsub",
+    "opcode": "lsub = 101 (0x65)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "subtract two longs"
+  },
+  {
+    "anchorId": "jvm-lushr",
+    "description": "bitwise shift right of a long value1 by int value2 positions, unsigned",
+    "format": "lushr",
+    "mnemonic": "lushr",
+    "opcode": "lushr = 125 (0x7d)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "bitwise shift right of a long value1 by int value2 positions, unsigned"
+  },
+  {
+    "anchorId": "jvm-lxor",
+    "description": "bitwise XOR of two longs",
+    "format": "lxor",
+    "mnemonic": "lxor",
+    "opcode": "lxor = 131 (0x83)",
+    "operandStackAfter": "result",
+    "operandStackBefore": "value1, value2",
+    "operation": "bitwise XOR of two longs"
+  },
+  {
+    "anchorId": "jvm-monitorenter",
+    "description": "enter monitor for object (\"grab the lock\" – start of synchronized() section)",
+    "format": "monitorenter",
+    "mnemonic": "monitorenter",
+    "opcode": "monitorenter = 194 (0xc2)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "objectref",
+    "operation": "enter monitor for object (\"grab the lock\" – start of synchronized() section)"
+  },
+  {
+    "anchorId": "jvm-monitorexit",
+    "description": "exit monitor for object (\"release the lock\" – end of synchronized() section)",
+    "format": "monitorexit",
+    "mnemonic": "monitorexit",
+    "opcode": "monitorexit = 195 (0xc3)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "objectref",
+    "operation": "exit monitor for object (\"release the lock\" – end of synchronized() section)"
+  },
+  {
+    "anchorId": "jvm-multianewarray",
+    "description": "create a new array of dimensions dimensions of type identified by class reference in constant pool index (indexbyte1 << 8 | indexbyte2); the sizes of each dimension is identified by count1, [count2, etc.]",
+    "format": "multianewarray 3 indexbyte1, indexbyte2, dimensions",
+    "mnemonic": "multianewarray",
+    "opcode": "multianewarray = 197 (0xc5)",
+    "operandStackAfter": "arrayref",
+    "operandStackBefore": "count1, [count2,...]",
+    "operation": "create a new array of dimensions dimensions of type identified by class reference in constant pool index (indexbyte1 << 8 | indexbyte2); the sizes of each dimension is identified by count1, [count2, etc.]"
+  },
+  {
+    "anchorId": "jvm-new",
+    "description": "create new object of type identified by class reference in constant pool index (indexbyte1 << 8 | indexbyte2)",
+    "format": "new 2 indexbyte1, indexbyte2",
+    "mnemonic": "new",
+    "opcode": "new = 187 (0xbb)",
+    "operandStackAfter": "objectref",
+    "operandStackBefore": "...",
+    "operation": "create new object of type identified by class reference in constant pool index (indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-newarray",
+    "description": "create new array with count elements of primitive type identified by atype",
+    "format": "newarray 1 atype",
+    "mnemonic": "newarray",
+    "opcode": "newarray = 188 (0xbc)",
+    "operandStackAfter": "arrayref",
+    "operandStackBefore": "count",
+    "operation": "create new array with count elements of primitive type identified by atype"
+  },
+  {
+    "anchorId": "jvm-nop",
+    "description": "perform no operation",
+    "format": "nop",
+    "mnemonic": "nop",
+    "opcode": "nop = 0 (0x00)",
+    "operandStackAfter": "No change",
+    "operandStackBefore": "No change",
+    "operation": "perform no operation"
+  },
+  {
+    "anchorId": "jvm-pop",
+    "description": "discard the top value on the stack",
+    "format": "pop",
+    "mnemonic": "pop",
+    "opcode": "pop = 87 (0x57)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "discard the top value on the stack"
+  },
+  {
+    "anchorId": "jvm-pop2",
+    "description": "discard the top two values on the stack (or one value, if it is a double or long)",
+    "format": "pop2",
+    "mnemonic": "pop2",
+    "opcode": "pop2 = 88 (0x58)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "{value2, value1}",
+    "operation": "discard the top two values on the stack (or one value, if it is a double or long)"
+  },
+  {
+    "anchorId": "jvm-putfield",
+    "description": "set field to value in an object objectref, where the field is identified by a field reference index in constant pool (indexbyte1 << 8 | indexbyte2)",
+    "format": "putfield 2 indexbyte1, indexbyte2",
+    "mnemonic": "putfield",
+    "opcode": "putfield = 181 (0xb5)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "objectref, value",
+    "operation": "set field to value in an object objectref, where the field is identified by a field reference index in constant pool (indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-putstatic",
+    "description": "set static field to value in a class, where the field is identified by a field reference index in constant pool (indexbyte1 << 8 | indexbyte2)",
+    "format": "putstatic 2 indexbyte1, indexbyte2",
+    "mnemonic": "putstatic",
+    "opcode": "putstatic = 179 (0xb3)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "value",
+    "operation": "set static field to value in a class, where the field is identified by a field reference index in constant pool (indexbyte1 << 8 | indexbyte2)"
+  },
+  {
+    "anchorId": "jvm-ret†",
+    "description": "continue execution from address taken from a local variable #index (the asymmetry with jsr is intentional)",
+    "format": "ret† 1 index",
+    "mnemonic": "ret†",
+    "opcode": "ret† = 169 (0xa9)",
+    "operandStackAfter": "No change",
+    "operandStackBefore": "No change",
+    "operation": "continue execution from address taken from a local variable #index (the asymmetry with jsr is intentional)"
+  },
+  {
+    "anchorId": "jvm-return",
+    "description": "return void from method",
+    "format": "return",
+    "mnemonic": "return",
+    "opcode": "return = 177 (0xb1)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "...",
+    "operation": "return void from method"
+  },
+  {
+    "anchorId": "jvm-saload",
+    "description": "load short from array",
+    "format": "saload",
+    "mnemonic": "saload",
+    "opcode": "saload = 53 (0x35)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "arrayref, index",
+    "operation": "load short from array"
+  },
+  {
+    "anchorId": "jvm-sastore",
+    "description": "store short to array",
+    "format": "sastore",
+    "mnemonic": "sastore",
+    "opcode": "sastore = 86 (0x56)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "arrayref, index, value",
+    "operation": "store short to array"
+  },
+  {
+    "anchorId": "jvm-sipush",
+    "description": "push a short onto the stack as an integer value",
+    "format": "sipush 2 byte1, byte2",
+    "mnemonic": "sipush",
+    "opcode": "sipush = 17 (0x11)",
+    "operandStackAfter": "value",
+    "operandStackBefore": "...",
+    "operation": "push a short onto the stack as an integer value"
+  },
+  {
+    "anchorId": "jvm-swap",
+    "description": "swaps two top words on the stack (note that value1 and value2 must not be double or long)",
+    "format": "swap",
+    "mnemonic": "swap",
+    "opcode": "swap = 95 (0x5f)",
+    "operandStackAfter": "value1, value2",
+    "operandStackBefore": "value2, value1",
+    "operation": "swaps two top words on the stack (note that value1 and value2 must not be double or long)"
+  },
+  {
+    "anchorId": "jvm-tableswitch",
+    "description": "continue execution from an address in the table at offset index",
+    "format": "tableswitch 16+ [0–3 bytes padding], defaultbyte1, defaultbyte2, defaultbyte3, defaultbyte4, lowbyte1, lowbyte2, lowbyte3, lowbyte4, highbyte1, highbyte2, highbyte3, highbyte4, jump offsets...",
+    "mnemonic": "tableswitch",
+    "opcode": "tableswitch = 170 (0xaa)",
+    "operandStackAfter": "[empty]",
+    "operandStackBefore": "index",
+    "operation": "continue execution from an address in the table at offset index"
+  },
+  {
+    "anchorId": "jvm-wide",
+    "description": "execute opcode, where opcode is either iload, fload, aload, lload, dload, istore, fstore, astore, lstore, dstore, or ret, but assume the index is 16 bit; or execute iinc, where the index is 16 bits and the constant to increment by is a signed 16 bit short",
+    "format": "wide 3/5 opcode, indexbyte1, indexbyte2or iinc, indexbyte1, indexbyte2, countbyte1, countbyte2",
+    "mnemonic": "wide",
+    "opcode": "wide = 196 (0xc4)",
+    "operandStackAfter": "[same as for corresponding instructions]",
+    "operandStackBefore": "...",
+    "operation": "execute opcode, where opcode is either iload, fload, aload, lload, dload, istore, fstore, astore, lstore, dstore, or ret, but assume the index is 16 bit; or execute iinc, where the index is 16 bits and the constant to increment by is a signed 16 bit short"
+  },
+  {
+    "anchorId": "jvm-(no name)",
+    "description": "these values are currently unassigned for opcodes and are reserved for future use",
+    "format": "(no name)",
+    "mnemonic": "(no name)",
+    "operandStackAfter": "No change",
+    "operandStackBefore": "No change",
+    "operation": "these values are currently unassigned for opcodes and are reserved for future use"
+  }
+]

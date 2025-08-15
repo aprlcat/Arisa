@@ -1,6 +1,7 @@
-module arisa/datagen
+module jvmdatagen/arisa
 
-go 1.24.3
+go 1.24.5
+
 
 require (
 	github.com/PuerkitoBio/goquery v1.10.3
