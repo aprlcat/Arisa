@@ -1,5 +1,7 @@
-use serde::{Deserialize, Serialize};
 use std::fs;
+
+use serde::{Deserialize, Serialize};
+
 use crate::error::{BotError, Result};
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -66,7 +68,8 @@ impl Default for Config {
                 quotes: vec![
                     "I LOVE TRANSGENDER WOEMN".to_string(),
                     "im sexy and i know it".to_string(),
-                    "thinking github came before git like thinking pornhub came before porn".to_string(),
+                    "thinking github came before git like thinking pornhub came before porn"
+                        .to_string(),
                     "translation lookaside buff a cock up my ass".to_string(),
                     "mov eax 0x80000000 mov ebx [eax] int 0x80".to_string(),
                     "love in the air! WRONG cannibalism".to_string(),
@@ -77,7 +80,9 @@ impl Default for Config {
                     "schizophrenic pond dweller the Frog coming".to_string(),
                     "GITPULLO COMMITO MERGE CONFLICTO".to_string(),
                     "i wannq fuck my computer".to_string(),
-                    "looks like the guys doing the testing got their CFLAGS wrong I reckon they forgot omit frame pointer".to_string(),
+                    "looks like the guys doing the testing got their CFLAGS wrong I reckon they \
+                     forgot omit frame pointer"
+                        .to_string(),
                     "g fsanitize undefined address fno omit frame pointer".to_string(),
                     "segfault yourself".to_string(),
                     "cat dev random".to_string(),
@@ -103,7 +108,10 @@ impl Config {
         } else {
             let config = Config::default();
             config.save(path)?;
-            println!("Created default config at {}. Please edit it with your Discord token.", path);
+            println!(
+                "Created default config at {}. Please edit it with your Discord token.",
+                path
+            );
             Ok(config)
         }
     }

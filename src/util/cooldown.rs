@@ -1,7 +1,11 @@
-use std::collections::HashMap;
-use std::sync::Arc;
-use std::time::{Duration, Instant};
+use std::{
+    collections::HashMap,
+    sync::Arc,
+    time::{Duration, Instant},
+};
+
 use tokio::sync::RwLock;
+
 use crate::error::{BotError, Result};
 
 #[derive(Clone)]
@@ -23,7 +27,9 @@ impl CooldownManager {
         cooldown_seconds: u64,
     ) -> Result<()> {
         let mut cooldowns = self.cooldowns.write().await;
-        let command_cooldowns = cooldowns.entry(command.to_string()).or_insert_with(HashMap::new);
+        let command_cooldowns = cooldowns
+            .entry(command.to_string())
+            .or_insert_with(HashMap::new);
 
         if let Some(&last_used) = command_cooldowns.get(&user_id) {
             let elapsed = last_used.elapsed();

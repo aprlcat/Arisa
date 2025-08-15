@@ -1,7 +1,9 @@
 use crate::{
     Context, Error,
-    util::command::check_cooldown,
-    util::embed::{create_info_embed, CatppuccinColors},
+    util::{
+        command::check_cooldown,
+        embed::{CatppuccinColors, create_info_embed},
+    },
 };
 
 #[poise::command(
@@ -9,7 +11,12 @@ use crate::{
     description_localized("en-US", "Hawk tuah! Spit on that thang!")
 )]
 pub async fn hawktuah(ctx: Context<'_>) -> Result<(), Error> {
-    check_cooldown(&ctx, "hawktuah", ctx.data().config.cooldowns.per_user_cooldown).await?;
+    check_cooldown(
+        &ctx,
+        "hawktuah",
+        ctx.data().config.cooldowns.per_user_cooldown,
+    )
+    .await?;
 
     let embed = create_info_embed("Hawk Tuah!", &ctx.data().config)
         .description("Spit on that thang! 🦅💦")

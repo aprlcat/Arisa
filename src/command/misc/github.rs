@@ -1,6 +1,9 @@
 use serde::Deserialize;
 
-use crate::{Context, Error, util::command::{check_cooldown, create_success_response}};
+use crate::{
+    Context, Error,
+    util::command::{check_cooldown, create_success_response},
+};
 
 #[derive(Deserialize)]
 struct GitHubUser {
@@ -73,7 +76,7 @@ pub async fn github(
         embed = embed.thumbnail(avatar_url);
         ctx.send(poise::CreateReply::default().embed(embed)).await?;
     }
-    
+
     Ok(())
 }
 

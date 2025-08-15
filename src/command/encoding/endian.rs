@@ -11,7 +11,12 @@ pub async fn endian(
     ctx: Context<'_>,
     #[description = "Hexadecimal data to swap (e.g., 'DEADBEEF' or '0xDEADBEEF')"] hex_data: String,
 ) -> Result<(), Error> {
-    check_cooldown(&ctx, "endian", ctx.data().config.cooldowns.per_user_cooldown).await?;
+    check_cooldown(
+        &ctx,
+        "endian",
+        ctx.data().config.cooldowns.per_user_cooldown,
+    )
+    .await?;
 
     let clean_hex = hex_data.replace(" ", "").replace("0x", "");
 
@@ -25,7 +30,8 @@ pub async fn endian(
         Ok(bytes) => {
             let swapped: Vec<u8> = bytes.into_iter().rev().collect();
             let result = hex::encode(swapped).to_uppercase();
-            let embed = create_success_response("Endianness Swapped", &result, true, &ctx.data().config);
+            let embed =
+                create_success_response("Endianness Swapped", &result, true, &ctx.data().config);
             ctx.send(poise::CreateReply::default().embed(embed)).await?;
         }
         Err(e) => {

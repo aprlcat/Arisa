@@ -81,15 +81,15 @@ async fn create_general_help_embed(ctx: Context<'_>) -> Result<CreateEmbed, Erro
 
     let mut encoding_commands = Vec::new();
     let mut crypto_commands = Vec::new();
-    let mut assembly_commands = Vec::new();
+    let mut java_commands = Vec::new();
     let mut misc_commands = Vec::new();
 
     for command in commands {
         match command.name.as_str() {
-            "help" | "github" | "color" => misc_commands.push(command),
+            "help" | "github" | "color" | "hawktuah" => misc_commands.push(command),
             "base64" | "url" | "rot" | "endian" | "timestamp" => encoding_commands.push(command),
             "hash" | "checksum" | "uuid" => crypto_commands.push(command),
-            "x86" => assembly_commands.push(command),
+            "jep" => java_commands.push(command),
             _ => misc_commands.push(command),
         }
     }
@@ -118,16 +118,16 @@ async fn create_general_help_embed(ctx: Context<'_>) -> Result<CreateEmbed, Erro
         embed = embed.field("Cryptography", field_text, false);
     }
 
-    if !assembly_commands.is_empty() {
+    if !java_commands.is_empty() {
         let mut field_text = String::new();
-        for cmd in assembly_commands {
+        for cmd in java_commands {
             field_text.push_str(&format!(
                 "• **{}** - {}\n",
                 cmd.name,
                 get_command_description(cmd)
             ));
         }
-        embed = embed.field("Assembly", field_text, false);
+        embed = embed.field("Java", field_text, false);
     }
 
     if !misc_commands.is_empty() {
@@ -167,10 +167,11 @@ fn get_command_description(command: &poise::Command<crate::Data, Error>) -> Stri
         "hash" => "Generate cryptographic hashes of data".to_string(),
         "checksum" => "Calculate checksums of data for integrity verification".to_string(),
         "uuid" => "Generate UUIDs (Universally Unique Identifiers)".to_string(),
-        "x86" => "Look up x86 assembly instructions by mnemonic or hex opcode".to_string(),
+        "jep" => "Get information about Java Enhancement Proposals".to_string(),
         "github" => "Get GitHub user or repository information".to_string(),
         "color" => "Convert and display colors in multiple formats".to_string(),
         "help" => "Show help information about commands".to_string(),
+        "hawktuah" => "Hawk tuah! Spit on that thang!".to_string(),
         _ => command
             .description
             .as_deref()

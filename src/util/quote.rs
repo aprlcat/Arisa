@@ -1,5 +1,6 @@
 use poise::serenity_prelude::{ActivityData, OnlineStatus};
 use rand::Rng;
+
 use crate::config::Config;
 
 pub fn get_random_quote(config: &Config) -> &str {

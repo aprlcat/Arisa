@@ -1,7 +1,9 @@
 use crate::{
     Context, Error,
     util::{
-        command::{check_cooldown, create_error_response, create_success_response, validate_input_size},
+        command::{
+            check_cooldown, create_error_response, create_success_response, validate_input_size,
+        },
         crypto::{calculate_adler32, calculate_crc32},
     },
 };

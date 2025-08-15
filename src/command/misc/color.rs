@@ -1,5 +1,6 @@
-use image::{ImageBuffer, Rgb};
 use std::io::Cursor;
+
+use image::{ImageBuffer, Rgb};
 use poise::serenity_prelude::CreateAttachment;
 
 use crate::{
@@ -65,23 +66,23 @@ pub async fn color(
     ctx.send(
         poise::CreateReply::default()
             .embed(embed)
-            .attachment(attachment)
-    ).await?;
+            .attachment(attachment),
+    )
+    .await?;
     Ok(())
 }
 
 fn generate_color_image(r: u8, g: u8, b: u8) -> Result<Vec<u8>, Error> {
     let width = 200u32;
     let height = 100u32;
-    
-    let img: ImageBuffer<Rgb<u8>, Vec<u8>> = ImageBuffer::from_fn(width, height, |_, _| {
-        Rgb([r, g, b])
-    });
+
+    let img: ImageBuffer<Rgb<u8>, Vec<u8>> =
+        ImageBuffer::from_fn(width, height, |_, _| Rgb([r, g, b]));
 
     let mut buf = Vec::new();
     let mut cursor = Cursor::new(&mut buf);
     img.write_to(&mut cursor, image::ImageFormat::Png)?;
-    
+
     Ok(buf)
 }
 

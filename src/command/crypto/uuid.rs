@@ -1,4 +1,7 @@
-use crate::{Context, Error, util::command::{check_cooldown, create_success_response}};
+use crate::{
+    Context, Error,
+    util::command::{check_cooldown, create_success_response},
+};
 
 #[derive(poise::ChoiceParameter)]
 pub enum UuidVersion {

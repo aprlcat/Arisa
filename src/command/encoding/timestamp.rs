@@ -16,7 +16,12 @@ pub async fn timestamp(
     date: Option<String>,
     #[description = "Show in local timezone instead of UTC"] local: Option<bool>,
 ) -> Result<(), Error> {
-    check_cooldown(&ctx, "timestamp", ctx.data().config.cooldowns.per_user_cooldown).await?;
+    check_cooldown(
+        &ctx,
+        "timestamp",
+        ctx.data().config.cooldowns.per_user_cooldown,
+    )
+    .await?;
 
     let _use_local = local.unwrap_or(false);
 

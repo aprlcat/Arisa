@@ -9,6 +9,7 @@ use std::sync::Arc;
 use command::{
     crypto::{checksum, hash, uuid},
     encoding::{base64, endian, rot, timestamp, url},
+    java::jep,
     misc::{color, github, hawktuah, help},
 };
 use config::Config;
@@ -40,7 +41,10 @@ async fn on_error(error: poise::FrameworkError<'_, Data, Error>) {
             };
 
             let embed = util::command::create_error_response("Command Error", &error_msg);
-            if let Err(e) = ctx.send(poise::CreateReply::default().embed(embed).ephemeral(true)).await {
+            if let Err(e) = ctx
+                .send(poise::CreateReply::default().embed(embed).ephemeral(true))
+                .await
+            {
                 println!("Error sending error response: {:?}", e);
             }
 
@@ -74,10 +78,8 @@ async fn main() {
     dotenvy::dotenv().ok();
     util::logger::init().unwrap();
 
-    let config = Arc::new(
-        Config::load_or_create("config.toml")
-            .expect("Failed to load configuration")
-    );
+    let config =
+        Arc::new(Config::load_or_create("config.toml").expect("Failed to load configuration"));
 
     if config.discord.token.is_empty() {
         panic!("Discord token not set in config.toml");
@@ -102,22 +104,23 @@ async fn main() {
     let intents =
         serenity::GatewayIntents::non_privileged() | serenity::GatewayIntents::MESSAGE_CONTENT;
 
-let framework = poise::Framework::builder()
-    .options(poise::FrameworkOptions {
-        commands: vec![
-            help(),
-            base64(),
-            url(),
-            rot(),
-            endian(),
-            timestamp(),
-            hash(),
-            checksum(),
-            uuid(),
-            github(),
-            color(),
-            hawktuah(),
-        ],
+    let framework = poise::Framework::builder()
+        .options(poise::FrameworkOptions {
+            commands: vec![
+                help(),
+                base64(),
+                url(),
+                rot(),
+                endian(),
+                timestamp(),
+                hash(),
+                checksum(),
+                uuid(),
+                github(),
+                color(),
+                hawktuah(),
+                jep(),
+            ],
             prefix_options: poise::PrefixFrameworkOptions {
                 prefix: None,
                 ..Default::default()

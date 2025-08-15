@@ -3,8 +3,10 @@ use std::sync::Arc;
 use poise::serenity_prelude::Context as SerenityContext;
 use tokio::time::{Duration, sleep};
 
-use crate::config::Config;
-use crate::util::quote::{get_random_activity, get_random_interval_minutes, get_random_status};
+use crate::{
+    config::Config,
+    util::quote::{get_random_activity, get_random_interval_minutes, get_random_status},
+};
 
 pub fn start_status_updater(ctx: Arc<SerenityContext>, config: Arc<Config>) {
     tokio::spawn(async move {

@@ -1,8 +1,10 @@
 use poise::serenity_prelude::CreateEmbed;
 
-use crate::config::Config;
-use crate::error::{BotError, Result};
-use crate::util::embed::{create_error_embed, create_info_embed, create_success_embed};
+use crate::{
+    config::Config,
+    error::{BotError, Result},
+    util::embed::{create_error_embed, create_info_embed, create_success_embed},
+};
 
 pub async fn check_cooldown(
     ctx: &crate::Context<'_>,
@@ -25,7 +27,10 @@ pub fn validate_input_size(input: &str, config: &Config) -> Result<()> {
 
 pub fn truncate_output(output: String, config: &Config) -> String {
     if output.len() > config.limits.max_output_size {
-        format!("{}...\n*Output truncated*", &output[..config.limits.max_output_size - 20])
+        format!(
+            "{}...\n*Output truncated*",
+            &output[..config.limits.max_output_size - 20]
+        )
     } else {
         output
     }
@@ -40,7 +45,12 @@ pub fn create_error_response(title: &str, error: &str) -> CreateEmbed {
     create_error_embed(title).description(error)
 }
 
-pub fn create_success_response(title: &str, content: &str, is_code: bool, config: &Config) -> CreateEmbed {
+pub fn create_success_response(
+    title: &str,
+    content: &str,
+    is_code: bool,
+    config: &Config,
+) -> CreateEmbed {
     let description = if is_code {
         format_code_block(content, None)
     } else {
@@ -50,7 +60,12 @@ pub fn create_success_response(title: &str, content: &str, is_code: bool, config
     create_success_embed(title, config).description(truncate_output(description, config))
 }
 
-pub fn create_info_response(title: &str, content: &str, is_code: bool, config: &Config) -> CreateEmbed {
+pub fn create_info_response(
+    title: &str,
+    content: &str,
+    is_code: bool,
+    config: &Config,
+) -> CreateEmbed {
     let description = if is_code {
         format_code_block(content, None)
     } else {

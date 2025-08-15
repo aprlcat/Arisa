@@ -1,7 +1,6 @@
 use poise::serenity_prelude::{Color, CreateEmbed};
 
-use crate::config::Config;
-use crate::util::quote;
+use crate::{config::Config, util::quote};
 
 pub struct CatppuccinColors;
 

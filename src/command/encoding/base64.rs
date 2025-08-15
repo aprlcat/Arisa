@@ -1,6 +1,8 @@
 use crate::{
     Context, Error,
-    util::command::{check_cooldown, create_error_response, create_success_response, validate_input_size},
+    util::command::{
+        check_cooldown, create_error_response, create_success_response, validate_input_size,
+    },
 };
 
 #[derive(poise::ChoiceParameter)]
@@ -20,7 +22,12 @@ pub async fn base64(
     #[description = "Choose operation"] operation: Operation,
     #[description = "The data to encode or decode"] data: String,
 ) -> Result<(), Error> {
-    check_cooldown(&ctx, "base64", ctx.data().config.cooldowns.per_user_cooldown).await?;
+    check_cooldown(
+        &ctx,
+        "base64",
+        ctx.data().config.cooldowns.per_user_cooldown,
+    )
+    .await?;
 
     if let Err(e) = validate_input_size(&data, &ctx.data().config) {
         let embed = create_error_response("Base64 Error", &e.to_string());

@@ -1,6 +1,8 @@
 use crate::{
     Context, Error,
-    util::command::{check_cooldown, create_error_response, create_success_response, validate_input_size},
+    util::command::{
+        check_cooldown, create_error_response, create_success_response, validate_input_size,
+    },
 };
 
 fn rot_char(c: char, n: u8) -> char {
